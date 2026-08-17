@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Composition — SE301 OOP revision: owned lifetimes and the filled diamond.">
+  <link rel="icon" href="data:,">
+  <title>Composition | SE301 Revision</title>
+  <link rel="stylesheet" href="assets/pico.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <nav class="container">
+    <ul>
+      <li><a class="brand" href="index.html">SE301 <span class="brand-accent2">Revision</span></a></li>
+    </ul>
+    <ul>
+      <li><a href="aggregation.html">Aggregation</a></li>
+      <li><a href="composition.html" aria-current="page">Composition</a></li>
+      <li><a href="singleton.html">Singleton</a></li>
+      <li><a href="constructor-chaining.html">Constructor</a></li>
+      <li><a href="uml.html">UML</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <article>
+      <h2>Composition</h2>
+      <p>A “has-a” link where the whole owns the parts’ lifetimes — drawn with a filled diamond on the whole side.</p>
+
+      <figure>
+        <svg viewBox="0 0 300 170" role="img" aria-labelledby="composition-diagram-title composition-diagram-desc">
+          <title id="composition-diagram-title">Composition UML class diagram</title>
+          <desc id="composition-diagram-desc">House composes one or more Rooms using a filled diamond.</desc>
+          <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+            <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+            <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="currentColor"/>
+            <path class="uml-accent" d="M128 84H202"/>
+          </g>
+          <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+            <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">House</text>
+            <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Room</text>
+            <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+            <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+            <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">composition</text>
+          </g>
+        </svg>
+        <figcaption>The house creates its rooms in its constructor.</figcaption>
+      </figure>
+
+      <pre><code><span class="kw">final class</span> <span class="type">House</span> {
+  <span class="kw">private final</span> List&lt;Room&gt; rooms;
+  House() {
+    rooms = List.of(<span class="kw">new</span> Room(<span class="str">"Kitchen"</span>),
+                    <span class="kw">new</span> Room(<span class="str">"Bedroom"</span>));
+  }
+}</code></pre>
+    </article>
+  </main>
+
+  <footer class="container">
+    SE301 revision sheet &middot; OOP principles and UML
+  </footer>
+
+</body>
+</html>

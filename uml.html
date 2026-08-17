@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UML reference — SE301: associations, aggregation, composition, inheritance, multiplicities.">
+  <link rel="icon" href="data:,">
+  <title>UML reference | SE301 Revision</title>
+  <link rel="stylesheet" href="assets/pico.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <nav class="container">
+    <ul>
+      <li><a class="brand" href="index.html">SE301 <span class="brand-accent2">Revision</span></a></li>
+    </ul>
+    <ul>
+      <li><a href="aggregation.html">Aggregation</a></li>
+      <li><a href="composition.html">Composition</a></li>
+      <li><a href="singleton.html">Singleton</a></li>
+      <li><a href="constructor-chaining.html">Constructor</a></li>
+      <li><a href="uml.html" aria-current="page">UML</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+    <article>
+      <h2>UML at a glance</h2>
+      <div class="glyph-grid">
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Association plain line">
+            <line x1="10" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Association</h3>
+            <p>General link; no ownership implied.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Aggregation hollow diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Aggregation</h3>
+            <p>Independent parts; hollow diamond.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Composition filled diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Composition</h3>
+            <p>Lifetime-owned parts; filled diamond.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Inheritance open triangle">
+            <line x1="10" y1="16" x2="94" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M110 16L94 7L94 25Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>Inheritance</h3>
+            <p>“Is-a” link; triangle points to superclass.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="multiplicity">
+        <div><code>1</code><span>Exactly one.</span></div>
+        <div><code>1..*</code><span>One or more.</span></div>
+        <div><code>0..*</code><span>Zero or more.</span></div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="container">
+    SE301 revision sheet &middot; OOP principles and UML
+  </footer>
+
+</body>
+</html>

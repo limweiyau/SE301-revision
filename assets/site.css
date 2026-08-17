@@ -14,6 +14,39 @@ nav ul {
   gap: 0.2rem 0.9rem;
 }
 
+.brand {
+  font-weight: 800;
+  color: var(--pico-text-color);
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; color: var(--pico-text-color); }
+.brand .brand-accent2 { color: var(--pico-primary); }
+
+nav ul a[aria-current="page"] {
+  color: var(--pico-primary);
+  font-weight: 700;
+}
+
+/* Landing hub */
+.hub-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+.hub-card { transition: border-color 120ms ease; }
+.hub-card:hover { border-color: var(--pico-primary); }
+.hub-card a { display: block; }
+.hub-card h2 { margin: 0 0 0.35rem; font-size: 1.25rem; }
+.hub-card p { margin: 0; color: var(--pico-muted-color); }
+
+@media (min-width: 640px) {
+  .hub-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .hub-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 main.container {
   padding-top: 2rem;
   padding-bottom: 3rem;
