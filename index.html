@@ -11,7 +11,7 @@
       --page: #f6f7f9;
       --card: #ffffff;
       --ink: #1c2530;
-      --muted: #5b6779;
+      --muted: #4a5568;
       --accent: #2f6fed;
       --accent-soft: #edf3ff;
       --line: #dfe4ec;
@@ -33,8 +33,8 @@
       background: var(--page);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.7;
     }
 
     a {
@@ -71,7 +71,7 @@
       gap: 8px;
       margin: 0 0 12px;
       color: var(--accent);
-      font-size: 0.78rem;
+      font-size: 1rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -124,7 +124,7 @@
       border-radius: 999px;
       background: var(--page);
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 1rem;
       font-weight: 700;
       text-decoration: none;
     }
@@ -137,22 +137,23 @@
     }
 
     main {
-      padding: 52px 0 68px;
+      padding: 64px 0 80px;
     }
 
     section + section {
-      margin-top: 68px;
+      margin-top: 72px;
     }
 
     .section-heading {
       display: grid;
-      gap: 4px;
-      margin-bottom: 24px;
+      gap: 8px;
+      max-width: 70ch;
+      margin-bottom: 32px;
     }
 
     .section-number {
       color: var(--accent);
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: 850;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -160,7 +161,7 @@
 
     h2 {
       margin-bottom: 0;
-      font-size: clamp(1.65rem, 5vw, 2.5rem);
+      font-size: clamp(1.9rem, 5vw, 2.75rem);
       line-height: 1.15;
       letter-spacing: -0.035em;
     }
@@ -172,7 +173,7 @@
     }
 
     .section-intro {
-      max-width: 640px;
+      max-width: 70ch;
       margin: 4px 0 0;
       color: var(--muted);
     }
@@ -184,42 +185,40 @@
       box-shadow: var(--shadow);
     }
 
-    .plan-grid {
-      display: grid;
-      gap: 12px;
-      counter-reset: plan;
+    .study-list {
+      width: 100%;
+      max-width: 70ch;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .plan-card {
-      position: relative;
-      padding: 22px 20px 20px 62px;
-      counter-increment: plan;
+    .study-item {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 16px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .plan-card::before {
-      position: absolute;
-      top: 20px;
-      left: 18px;
-      display: grid;
-      width: 30px;
-      height: 30px;
-      place-items: center;
-      border-radius: 9px;
-      background: var(--accent-soft);
+    .study-item:first-child {
+      padding-top: 0;
+    }
+
+    .study-number {
       color: var(--accent);
-      content: counter(plan, decimal-leading-zero);
-      font-size: 0.72rem;
+      font-size: 1.6rem;
       font-weight: 850;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
     }
 
-    .plan-card p {
+    .study-item p {
       margin-bottom: 5px;
       color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.5;
     }
 
-    .plan-card p:last-child {
+    .study-item p:last-child {
       margin-bottom: 0;
     }
 
@@ -255,7 +254,7 @@
       gap: 8px;
       margin-bottom: 10px;
       color: var(--accent);
-      font-size: 0.78rem;
+      font-size: 1rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -302,7 +301,7 @@
     .diagram-card figcaption {
       padding: 10px 6px 2px;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 1rem;
       text-align: center;
     }
 
@@ -315,7 +314,7 @@
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-align: left;
     }
 
@@ -329,7 +328,7 @@
     th {
       background: var(--accent-soft);
       color: #244e9c;
-      font-size: 0.78rem;
+      font-size: 1rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -360,12 +359,12 @@
 
     .code-title h3 {
       margin: 0;
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
 
     .code-title span {
       color: #aebed9;
-      font-size: 0.76rem;
+      font-size: 1rem;
       font-weight: 750;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -377,7 +376,7 @@
       overflow-x: auto;
       background: var(--code);
       color: #dce6f7;
-      font: 0.83rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font: 1rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       tab-size: 2;
     }
 
@@ -398,7 +397,7 @@
       border-top: 1px solid var(--line);
       background: var(--card);
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 1rem;
     }
 
     .reference-card {
@@ -419,7 +418,7 @@
     .reference-card p {
       margin-bottom: 0;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 1rem;
     }
 
     .multiplicity-strip {
@@ -442,7 +441,7 @@
 
     .multiplicity-item code {
       color: var(--accent);
-      font-size: 0.92rem;
+      font-size: 1rem;
       font-weight: 850;
     }
 
@@ -450,9 +449,21 @@
       color: var(--muted);
     }
 
+    .singleton-grid {
+      display: grid;
+      gap: 16px;
+      max-width: 70ch;
+    }
+
+    .singleton-grid > * {
+      min-width: 0;
+      margin-top: 0;
+    }
+
     .check-list {
       display: grid;
       gap: 10px;
+      max-width: 70ch;
     }
 
     details {
@@ -506,7 +517,7 @@
       padding: 24px 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 1rem;
       text-align: center;
     }
 
@@ -523,12 +534,9 @@
         padding-top: 72px;
       }
 
-      .plan-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .plan-card:last-child {
-        grid-column: 1 / -1;
+      .study-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 20px;
       }
 
       .definition-grid,
@@ -542,7 +550,7 @@
       }
 
       table {
-        font-size: 0.96rem;
+        font-size: 1rem;
       }
 
       th,
@@ -556,21 +564,9 @@
     }
 
     @media (min-width: 1000px) {
-      .plan-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .plan-card,
-      .plan-card:last-child {
-        grid-column: auto;
-      }
-
-      .plan-card {
-        padding: 62px 18px 20px;
-      }
-
-      .plan-card::before {
-        top: 18px;
+      .singleton-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        max-width: none;
       }
 
       .reference-grid {
@@ -602,6 +598,7 @@
       <nav class="jump-links" aria-label="Page sections">
         <a href="#plan">Revision plan</a>
         <a href="#whole-part">Core comparison</a>
+        <a href="#singleton">Singleton</a>
         <a href="#examples">Java examples</a>
         <a href="#uml-reference">UML reference</a>
         <a href="#self-check">Self-check</a>
@@ -613,37 +610,60 @@
     <section id="plan" aria-labelledby="plan-title">
       <div class="section-heading">
         <span class="section-number">01 / Revision plan</span>
-        <h2 id="plan-title">Five ideas to know</h2>
+        <h2 id="plan-title">Six ideas to know</h2>
         <p class="section-intro">Read each prompt, then answer the test question without looking back.</p>
       </div>
 
-      <div class="plan-grid">
-        <article class="card plan-card">
-          <h3>Objects vs classes</h3>
-          <p><span class="label">Know this:</span> A class defines a type; an object is an instance of it.</p>
-          <p><span class="label">Test yourself:</span> How does an object differ from its class?</p>
-        </article>
-        <article class="card plan-card">
-          <h3>Encapsulation</h3>
-          <p><span class="label">Know this:</span> Keep data private and control access through methods.</p>
-          <p><span class="label">Test yourself:</span> Why should a field often be private?</p>
-        </article>
-        <article class="card plan-card">
-          <h3>Inheritance</h3>
-          <p><span class="label">Know this:</span> A subclass can reuse and extend a superclass.</p>
-          <p><span class="label">Test yourself:</span> Which class receives inherited members?</p>
-        </article>
-        <article class="card plan-card">
-          <h3>Polymorphism</h3>
-          <p><span class="label">Know this:</span> One reference can use different subclass implementations.</p>
-          <p><span class="label">Test yourself:</span> Which overridden method runs at runtime?</p>
-        </article>
-        <article class="card plan-card">
-          <h3>Aggregation vs composition</h3>
-          <p><span class="label">Know this:</span> Both are whole-part links, but ownership differs.</p>
-          <p><span class="label">Test yourself:</span> Which one controls a part's lifetime?</p>
-        </article>
-      </div>
+      <ol class="study-list">
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">01</span>
+          <div>
+            <h3>Objects vs classes</h3>
+            <p><span class="label">Know this:</span> A class defines a type; an object is an instance of it.</p>
+            <p><span class="label">Test yourself:</span> How does an object differ from its class?</p>
+          </div>
+        </li>
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">02</span>
+          <div>
+            <h3>Encapsulation</h3>
+            <p><span class="label">Know this:</span> Keep data private and control access through methods.</p>
+            <p><span class="label">Test yourself:</span> Why should a field often be private?</p>
+          </div>
+        </li>
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">03</span>
+          <div>
+            <h3>Inheritance</h3>
+            <p><span class="label">Know this:</span> A subclass can reuse and extend a superclass.</p>
+            <p><span class="label">Test yourself:</span> Which class receives inherited members?</p>
+          </div>
+        </li>
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">04</span>
+          <div>
+            <h3>Polymorphism</h3>
+            <p><span class="label">Know this:</span> One reference can use different subclass implementations.</p>
+            <p><span class="label">Test yourself:</span> Which overridden method runs at runtime?</p>
+          </div>
+        </li>
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">05</span>
+          <div>
+            <h3>Aggregation vs composition</h3>
+            <p><span class="label">Know this:</span> Both are whole-part links, but ownership differs.</p>
+            <p><span class="label">Test yourself:</span> Which one controls a part's lifetime?</p>
+          </div>
+        </li>
+        <li class="study-item">
+          <span class="study-number" aria-hidden="true">06</span>
+          <div>
+            <h3>Singleton</h3>
+            <p><span class="label">Know this:</span> A class that guarantees exactly one instance, reached through a static getInstance().</p>
+            <p><span class="label">Test yourself:</span> Why can you not use new? How do you get the instance?</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section id="whole-part" aria-labelledby="whole-part-title">
@@ -688,15 +708,15 @@
           <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
             <text x="153" y="106" text-anchor="middle" font-size="23" font-weight="750">Library</text>
             <text x="602" y="106" text-anchor="middle" font-size="23" font-weight="750">Book</text>
-            <text x="278" y="78" text-anchor="middle" font-size="15" font-weight="750">1</text>
-            <text x="455" y="78" text-anchor="middle" font-size="15" font-weight="750">1..*</text>
-            <text class="uml-caption" x="378" y="132" text-anchor="middle" font-size="14">aggregation</text>
+            <text x="278" y="78" text-anchor="middle" font-size="16" font-weight="750">1</text>
+            <text x="455" y="78" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+            <text class="uml-caption" x="378" y="132" text-anchor="middle" font-size="16">aggregation</text>
 
             <text x="153" y="332" text-anchor="middle" font-size="23" font-weight="750">House</text>
             <text x="602" y="332" text-anchor="middle" font-size="23" font-weight="750">Room</text>
-            <text x="278" y="304" text-anchor="middle" font-size="15" font-weight="750">1</text>
-            <text x="455" y="304" text-anchor="middle" font-size="15" font-weight="750">1..*</text>
-            <text class="uml-caption" x="378" y="358" text-anchor="middle" font-size="14">composition</text>
+            <text x="278" y="304" text-anchor="middle" font-size="16" font-weight="750">1</text>
+            <text x="455" y="304" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+            <text class="uml-caption" x="378" y="358" text-anchor="middle" font-size="16">composition</text>
           </g>
         </svg>
         <figcaption>The diamond sits beside the whole: Library or House.</figcaption>
@@ -737,11 +757,72 @@
       </div>
     </section>
 
+    <section id="singleton" aria-labelledby="singleton-title">
+      <div class="section-heading">
+        <span class="section-number">03 / Singleton</span>
+        <h2 id="singleton-title">Singleton — one instance only</h2>
+        <p class="section-intro">A Singleton provides one shared instance when an application needs a single point of access.</p>
+      </div>
+
+      <div class="singleton-grid">
+        <figure class="card diagram-card">
+          <svg viewBox="0 0 760 310" role="img" aria-labelledby="singleton-diagram-title singleton-diagram-desc">
+            <title id="singleton-diagram-title">Singleton UML class diagram</title>
+            <desc id="singleton-diagram-desc">Client A, Client B, and Client C each access the same Singleton instance.</desc>
+            <defs>
+              <marker id="singleton-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10Z" fill="#2f6fed"/>
+              </marker>
+            </defs>
+
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect class="uml-box" x="40" y="28" width="200" height="64" rx="4"/>
+              <rect class="uml-box" x="40" y="120" width="200" height="64" rx="4"/>
+              <rect class="uml-box" x="40" y="212" width="200" height="64" rx="4"/>
+              <rect class="uml-box" x="430" y="28" width="290" height="248" rx="4"/>
+              <path class="uml-box" d="M430 92H720M430 162H720"/>
+            </g>
+
+            <g class="uml-accent" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" marker-end="url(#singleton-arrow)">
+              <path d="M240 60H420"/>
+              <path d="M240 152H420"/>
+              <path d="M240 244H420"/>
+            </g>
+
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="140" y="67" text-anchor="middle" font-size="19" font-weight="750">Client A</text>
+              <text x="140" y="159" text-anchor="middle" font-size="19" font-weight="750">Client B</text>
+              <text x="140" y="251" text-anchor="middle" font-size="19" font-weight="750">Client C</text>
+              <text x="575" y="69" text-anchor="middle" font-size="22" font-weight="750">Singleton</text>
+              <text x="452" y="134" font-size="18">-instance</text>
+              <text x="452" y="207" font-size="18">+ getInstance()</text>
+              <text class="uml-caption" x="330" y="298" text-anchor="middle" font-size="17">returns same instance</text>
+            </g>
+          </svg>
+        </figure>
+
+        <article class="card code-card">
+          <div class="code-title">
+            <h3>Singleton</h3>
+            <span>Java</span>
+          </div>
+          <pre><code><span class="kw">public class</span> <span class="type">Singleton</span> {
+  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE =
+      <span class="kw">new</span> <span class="type">Singleton</span>();
+  <span class="kw">private</span> <span class="type">Singleton</span>() {}
+  <span class="kw">public static</span> <span class="type">Singleton</span> getInstance() {
+    <span class="kw">return</span> INSTANCE;
+  }
+}</code></pre>
+        </article>
+      </div>
+    </section>
+
     <section id="examples" aria-labelledby="examples-title">
       <div class="section-heading">
-        <span class="section-number">03 / Tiny code examples</span>
+        <span class="section-number">04 / Tiny code examples</span>
         <h2 id="examples-title">See ownership in Java</h2>
-        <p class="section-intro">Look at where each part is created. That choice signals the intended lifetime.</p>
+        <p class="section-intro">Look at where each part is created. That choice signals the intended lifetime.<br>If a class declares no constructor, Java inserts a default one.</p>
       </div>
 
       <div class="code-grid">
@@ -781,12 +862,26 @@
 }</code></pre>
           <p class="code-note">The house creates its rooms and controls their lifetime.</p>
         </article>
+
+        <article class="card code-card">
+          <div class="code-title">
+            <h3>Constructor chaining<br><small>default constructors</small></h3>
+            <span>Java</span>
+          </div>
+          <pre><code><span class="kw">class</span> <span class="type">Grandparent</span> { }                              // implicit default constructor: Grandparent() { super(); }
+<span class="kw">class</span> <span class="type">Parent</span> <span class="kw">extends</span> <span class="type">Grandparent</span> { }               // implicit: Parent() { super(); } -&gt; chains up to Grandparent
+<span class="kw">final class</span> <span class="type">Child</span> <span class="kw">extends</span> <span class="type">Parent</span> {
+  Child() { <span class="kw">super</span>(); }                             // explicit, writes the chain by hand
+  // if omitted, javac inserts this exact super() call
+}</code></pre>
+          <p class="code-note">Constructors chain vertically up the hierarchy: Child -&gt; Parent -&gt; Grandparent -&gt; Object. A default constructor appears when none is declared.</p>
+        </article>
       </div>
     </section>
 
     <section id="uml-reference" aria-labelledby="uml-reference-title">
       <div class="section-heading">
-        <span class="section-number">04 / UML quick reference</span>
+        <span class="section-number">05 / UML quick reference</span>
         <h2 id="uml-reference-title">Read the line endings</h2>
         <p class="section-intro">Start at the symbol, then identify which class it touches.</p>
       </div>
@@ -845,7 +940,7 @@
 
     <section id="self-check" aria-labelledby="self-check-title">
       <div class="section-heading">
-        <span class="section-number">05 / Self-check</span>
+        <span class="section-number">06 / Self-check</span>
         <h2 id="self-check-title">Can you answer these?</h2>
         <p class="section-intro">Choose a question to reveal its answer.</p>
       </div>
@@ -866,6 +961,10 @@
         <details>
           <summary>What does <code>1..*</code> mean?</summary>
           <p><span class="answer-label">Answer:</span> One or more instances.</p>
+        </details>
+        <details>
+          <summary>How do you obtain the singleton instance?</summary>
+          <p><span class="answer-label">Answer:</span> Through getInstance(); the constructor is private.</p>
         </details>
       </div>
     </section>
