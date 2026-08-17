@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A quick UML reference for SE301 relationship glyphs and multiplicities.">
+  <link rel="icon" href="data:,">
+  <title>SE301 Revision — UML Reference</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <p class="eyebrow">Visual study sheet</p>
+      <h1 class="site-title"><a href="index.html">SE301 Revision — OOP Principles &amp; UML</a></h1>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="plan.html">Plan</a>
+        <a href="aggregation.html">Aggregation</a>
+        <a href="composition.html">Composition</a>
+        <a href="singleton.html">Singleton</a>
+        <a href="constructor-chaining.html">Constructor chain</a>
+        <a class="current" href="uml-reference.html" aria-current="page">UML</a>
+        <a href="self-check.html">Self-check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="uml-reference" aria-labelledby="uml-reference-title">
+      <div class="section-heading">
+        <span class="section-number">05 / UML quick reference</span>
+        <h2 id="uml-reference-title">Read the line endings</h2>
+        <p class="section-intro">Start at the symbol, then identify which class it touches.</p>
+      </div>
+
+      <div class="reference-grid">
+        <article class="card reference-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Association plain line">
+            <line x1="10" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Association</h3>
+            <p>A general class relationship; ownership is not implied.</p>
+          </div>
+        </article>
+
+        <article class="card reference-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Aggregation hollow diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="#ffffff" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Aggregation</h3>
+            <p>Independent parts; hollow diamond at the whole.</p>
+          </div>
+        </article>
+
+        <article class="card reference-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Composition filled diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Composition</h3>
+            <p>Lifetime-owned parts; filled diamond at the whole.</p>
+          </div>
+        </article>
+
+        <article class="card reference-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Inheritance open triangle">
+            <line x1="10" y1="16" x2="94" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M110 16L94 7L94 25Z" fill="#ffffff" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>Inheritance</h3>
+            <p>An “is-a” link; open triangle points to the superclass.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="multiplicity-strip">
+        <div class="multiplicity-item"><code>1</code><span>Exactly one.</span></div>
+        <div class="multiplicity-item"><code>1..*</code><span>One or more.</span></div>
+        <div class="multiplicity-item"><code>0..*</code><span>Zero or more.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">SE301 revision sheet · OOP principles and UML</div>
+  </footer>
+</body>
+</html>

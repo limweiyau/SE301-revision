@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A concise visual revision guide to OOP principles and UML relationships for SE301.">
+  <link rel="icon" href="data:,">
+  <title>Aggregation | SE301 Revision</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <p class="eyebrow">Visual study sheet</p>
+      <h1 class="site-title"><a href="index.html">SE301 Revision — OOP Principles &amp; UML</a></h1>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="plan.html">Plan</a>
+        <a href="aggregation.html" class="current" aria-current="page">Aggregation</a>
+        <a href="composition.html">Composition</a>
+        <a href="singleton.html">Singleton</a>
+        <a href="constructor-chaining.html">Constructor chain</a>
+        <a href="uml-reference.html">UML</a>
+        <a href="self-check.html">Self-check</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section aria-labelledby="aggregation-page-title">
+      <div class="section-heading">
+        <span class="section-number">02 / Core section</span>
+        <h2 id="aggregation-page-title">Aggregation</h2>
+        <p class="section-intro">Both are “has-a” whole-part relationships. The difference is how strongly the whole owns its parts.</p>
+      </div>
+
+      <article class="card concept-card" aria-labelledby="aggregation-title">
+        <span class="diamond-label"><span class="diamond" aria-hidden="true"></span>Aggregation</span>
+        <h3 id="aggregation-title">Parts stay independent</h3>
+        <p>Aggregation is a “has-a” relationship where parts can exist independently, outlive the whole, and be shared.</p>
+        <p>UML places a hollow diamond on the whole side.</p>
+
+        <figure class="mini-diagram">
+          <svg viewBox="0 0 300 170" role="img" aria-labelledby="aggregation-diagram-title aggregation-diagram-desc">
+            <title id="aggregation-diagram-title">Aggregation UML class diagram</title>
+            <desc id="aggregation-diagram-desc">Library aggregates one or more Books using a hollow diamond.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+              <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+              <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="#ffffff"/>
+              <path class="uml-accent" d="M128 84H202"/>
+            </g>
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">Library</text>
+              <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Book</text>
+              <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+              <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+              <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">aggregation</text>
+            </g>
+          </svg>
+          <figcaption>The diamond sits beside the whole: Library or House.</figcaption>
+        </figure>
+
+        <section class="example-card code-card" aria-labelledby="aggregation-example-title">
+          <div class="code-title">
+            <h3 id="aggregation-example-title">Aggregation Java example</h3>
+            <span>Java</span>
+          </div>
+          <pre><code><span class="kw">import</span> java.util.List;
+
+<span class="kw">final class</span> <span class="type">Book</span> { }
+
+<span class="kw">final class</span> <span class="type">Library</span> {
+  <span class="kw">private final</span> List&lt;Book&gt; books;
+  Library(List&lt;Book&gt; books) {
+    <span class="kw">this</span>.books = books;
+  }
+}</code></pre>
+          <p class="code-note">The books are created elsewhere and passed into the library.</p>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">SE301 revision sheet · OOP principles and UML</div>
+  </footer>
+</body>
+</html>
