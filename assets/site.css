@@ -1,5 +1,11 @@
 /* SE301 — thin layer on Pico (dark). */
 
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topic-list a:hover,
+.nav-links a:hover,
+.brand:hover { text-decoration: none; }
+
 :root {
   --site-bg: #0a0a0f;
   --site-surface: rgba(20, 21, 29, 0.88);
@@ -37,6 +43,7 @@ body { background: var(--site-bg); }
   letter-spacing: -0.025em;
   color: var(--pico-text-color);
   white-space: nowrap;
+  text-decoration: none;
 }
 .brand::before {
   width: 0.42rem;
@@ -138,7 +145,7 @@ body { background: var(--site-bg); }
 
 /* ---------- Layout ---------- */
 main.container {
-  padding-top: 1.75rem;
+  padding-top: 2.5rem;
   padding-bottom: 3rem;
   min-height: 60vh;
 }
@@ -223,7 +230,8 @@ article { margin-bottom: 1.5rem; }
 article h2 { margin-top: 0; }
 
 /* ---------- Diagrams ---------- */
-figure { margin: 1.25rem 0; }
+figure { margin: 0.75rem 0 1.25rem; }
+article h2 { margin: 0 0 0.6rem; }
 figure svg {
   display: block;
   width: 100%;
