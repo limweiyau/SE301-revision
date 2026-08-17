@@ -1,17 +1,20 @@
-/* SE301 landing — thin layer on top of Pico (dark theme). */
-:root {
-  --uml-line: #d7dbe3;
-  --uml-accent: #6b8afd;
-  --uml-caption: #a3a9b5;
-}
+/* SE301 — thin layer on Pico (dark). */
 
-body > nav {
+/* ---------- Collapsible hamburger navbar (all screen sizes) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   border-bottom: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.09));
+  background: var(--pico-background-color);
 }
 
-nav ul {
-  flex-wrap: wrap;
-  gap: 0.2rem 0.9rem;
+.nav-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
 }
 
 .brand {
@@ -22,75 +25,125 @@ nav ul {
 .brand:hover { text-decoration: none; color: var(--pico-text-color); }
 .brand .brand-accent2 { color: var(--pico-primary); }
 
-nav ul a[aria-current="page"] {
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.14));
+  border-radius: var(--pico-border-radius);
+  background: transparent;
+  color: var(--pico-text-color);
+  cursor: pointer;
+  --pico-background-color: transparent;
+  --pico-border-color: transparent;
+  --pico-box-shadow: none;
+}
+.nav-toggle:hover { background: var(--pico-primary-focus, rgba(107, 138, 253, 0.12)); }
+
+.nav-links {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 10px;
+  background: var(--pico-card-background-color);
+  border: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.14));
+  border-radius: var(--pico-border-radius);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  list-style: none;
+}
+.navbar.open .nav-links { display: flex; }
+.nav-links li { width: 100%; }
+.nav-links a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 15.5px;
+}
+.nav-links a:hover { background: var(--pico-primary-focus, rgba(107, 138, 253, 0.12)); text-decoration: none; }
+.nav-links a[aria-current="page"] {
   color: var(--pico-primary);
   font-weight: 700;
+  background: var(--pico-primary-focus, rgba(107, 138, 253, 0.12));
 }
 
-/* Landing hub */
-.hub-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  margin-top: 1.5rem;
-}
-.hub-card { transition: border-color 120ms ease; }
-.hub-card:hover { border-color: var(--pico-primary); }
-.hub-card a { display: block; }
-.hub-card h2 { margin: 0 0 0.35rem; font-size: 1.25rem; }
-.hub-card p { margin: 0; color: var(--pico-muted-color); }
-
-@media (min-width: 640px) {
-  .hub-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 1024px) {
-  .hub-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
+/* ---------- Layout ---------- */
 main.container {
-  padding-top: 2rem;
+  padding-top: 1.75rem;
   padding-bottom: 3rem;
+  min-height: 60vh;
 }
 
-hgroup {
-  margin-bottom: 2.25rem;
-}
+hgroup { margin-bottom: 1.5rem; }
+hgroup h1 { margin-bottom: 0.35rem; }
+hgroup p { color: var(--pico-muted-color); margin: 0; }
 
-article figure {
-  margin: 1rem 0;
+/* ---------- Minimal topic list (landing) ---------- */
+.topic-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
 }
+.topic-list li { border-bottom: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.09)); }
+.topic-list li:last-child { border-bottom: none; }
+.topic-list a {
+  display: block;
+  padding: 0.85rem 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.topic-list a:hover { text-decoration: none; color: var(--pico-primary); }
 
-figure img, figure svg {
+article { margin-bottom: 1.5rem; }
+article h2 { margin-top: 0; }
+
+/* ---------- Diagrams ---------- */
+figure { margin: 1.25rem 0; }
+figure svg {
+  display: block;
+  width: 100%;
   max-width: min(340px, 100%);
   height: auto;
-  display: block;
   margin-inline: auto;
 }
-
 figure figcaption {
   text-align: center;
   font-size: 0.85rem;
   color: var(--pico-muted-color);
   margin-top: 0.4rem;
 }
-
-/* UML diagram strokes (visible on dark) */
-.uml-box { stroke: var(--uml-line); }
-.uml-accent { stroke: var(--uml-accent); }
-.uml-caption { fill: var(--uml-caption); }
+.uml-box { stroke: #d7dbe3; }
+.uml-accent { stroke: #6b8afd; }
+.uml-caption { fill: #a3a9b5; }
 svg .uml-box, svg .uml-accent { fill: none; }
 
-/* Java syntax tokens on Pico's pre (dark) */
+/* ---------- Code: wraps, never scrolls sideways ---------- */
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  padding: 1rem 1.1rem;
+  font-size: clamp(12.5px, 1.05vw + 0.5rem, 14px);
+  line-height: 1.6;
+}
 pre code .kw { color: #ff7b72; }
 pre code .type { color: #79c0ff; }
 pre code .str { color: #a5d6ff; }
 
-/* UML reference glyph cards */
+/* ---------- UML glyph cards ---------- */
 .glyph-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 .glyph-card {
   display: flex;
@@ -101,10 +154,10 @@ pre code .str { color: #a5d6ff; }
 .glyph-card > div { min-width: 0; }
 .glyph-card svg {
   flex: 0 0 auto;
-  width: 72px;
-  color: var(--uml-accent);
+  width: 64px;
+  color: #6b8afd;
 }
-.glyph-card h3 { margin: 0 0 0.15rem; }
+.glyph-card h3 { margin: 0 0 0.15rem; font-size: 1.05rem; }
 .glyph-card p { margin: 0; color: var(--pico-muted-color); font-size: 0.95rem; }
 
 .multiplicity {
@@ -124,17 +177,13 @@ pre code .str { color: #a5d6ff; }
   padding: 0.7rem 1rem;
   background: var(--pico-card-background-color);
 }
-.multiplicity code {
-  color: var(--uml-accent);
-  white-space: nowrap;
-}
+.multiplicity code { color: #6b8afd; white-space: nowrap; }
 .multiplicity span { color: var(--pico-muted-color); }
 
 @media (min-width: 720px) {
   .glyph-grid { grid-template-columns: repeat(2, 1fr); }
   .multiplicity { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media (min-width: 1024px) {
   .glyph-grid { grid-template-columns: repeat(4, 1fr); }
 }

@@ -11,58 +11,37 @@
 </head>
 <body>
 
-  <nav class="container">
-    <ul>
-      <li><strong>SE301 Revision</strong></li>
-    </ul>
-    <ul>
-      <li><a href="aggregation.html">Aggregation</a></li>
-      <li><a href="composition.html">Composition</a></li>
-      <li><a href="singleton.html">Singleton</a></li>
-      <li><a href="constructor-chaining.html">Constructor</a></li>
-      <li><a href="uml.html">UML</a></li>
-    </ul>
-  </nav>
-
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">SE301 <span class="brand-accent2">Revision</span></a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
+          <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="aggregation.html">Aggregation</a></li>
+        <li><a href="composition.html">Composition</a></li>
+        <li><a href="singleton.html">Singleton</a></li>
+        <li><a href="constructor-chaining.html">Constructor</a></li>
+        <li><a href="uml.html">UML</a></li>
+      </ul>
+    </div>
+  </header>
   <main class="container">
 
     <hgroup>
-      <h1>OOP principles, visually</h1>
-      <p>Five focused pages. Pick a concept.</p>
+      <h1>SE301 Revision</h1>
+      <p>OOP principles and their UML notation — five short pages.</p>
     </hgroup>
 
-    <div class="hub-grid">
-      <article class="hub-card">
-        <a href="aggregation.html">
-          <h2>Aggregation</h2>
-          <p>Parts exist independently and may be shared — hollow diamond on the whole side.</p>
-        </a>
-      </article>
-      <article class="hub-card">
-        <a href="composition.html">
-          <h2>Composition</h2>
-          <p>The whole owns the parts’ lifetimes — filled diamond on the whole side.</p>
-        </a>
-      </article>
-      <article class="hub-card">
-        <a href="singleton.html">
-          <h2>Singleton</h2>
-          <p>Exactly one instance, reached through a static getInstance().</p>
-        </a>
-      </article>
-      <article class="hub-card">
-        <a href="constructor-chaining.html">
-          <h2>Constructor chaining</h2>
-          <p>No constructor declared? Java inserts one that calls super().</p>
-        </a>
-      </article>
-      <article class="hub-card">
-        <a href="uml.html">
-          <h2>UML at a glance</h2>
-          <p>Association, aggregation, composition, inheritance — and multiplicities.</p>
-        </a>
-      </article>
-    </div>
+    <ul class="topic-list">
+      <li><a href="aggregation.html">Aggregation</a></li>
+      <li><a href="composition.html">Composition</a></li>
+      <li><a href="singleton.html">Singleton</a></li>
+      <li><a href="constructor-chaining.html">Constructor chaining</a></li>
+      <li><a href="uml.html">UML at a glance</a></li>
+    </ul>
 
   </main>
 
@@ -70,5 +49,30 @@
     SE301 revision sheet &middot; OOP principles and UML
   </footer>
 
+  <script>
+    (function () {
+      var navbar = document.querySelector("header.navbar");
+      var btn = document.getElementById("nav-toggle");
+      var links = document.getElementById("nav-links");
+      if (!navbar || !btn || !links) return;
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = navbar.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) {
+          navbar.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && navbar.classList.contains("open")) {
+          navbar.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
