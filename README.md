@@ -1,3 +1,7 @@
 # SE301 Revision
-Single-page OOP principles and UML revision guide. Serve locally with `python3 -m http.server 8000`.
-Public URL: https://example.com/
+
+One-page visual revision sheet for SE301 OOP: aggregation, composition, singleton, constructor chaining, and UML notation.
+
+Serve locally: `python3 -m http.server 8080` in this directory.
+
+Live: https://hermes-thinkpad.tail4651e2.ts.net/se301/

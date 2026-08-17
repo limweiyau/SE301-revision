@@ -1,0 +1,107 @@
+/* SE301 landing — thin layer on top of Pico (dark theme). */
+:root {
+  --uml-line: #d7dbe3;
+  --uml-accent: #6b8afd;
+  --uml-caption: #a3a9b5;
+}
+
+body > nav {
+  border-bottom: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.09));
+}
+
+nav ul {
+  flex-wrap: wrap;
+  gap: 0.2rem 0.9rem;
+}
+
+main.container {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+hgroup {
+  margin-bottom: 2.25rem;
+}
+
+article figure {
+  margin: 1rem 0;
+}
+
+figure img, figure svg {
+  max-width: min(340px, 100%);
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+figure figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+  margin-top: 0.4rem;
+}
+
+/* UML diagram strokes (visible on dark) */
+.uml-box { stroke: var(--uml-line); }
+.uml-accent { stroke: var(--uml-accent); }
+.uml-caption { fill: var(--uml-caption); }
+svg .uml-box, svg .uml-accent { fill: none; }
+
+/* Java syntax tokens on Pico's pre (dark) */
+pre code .kw { color: #ff7b72; }
+pre code .type { color: #79c0ff; }
+pre code .str { color: #a5d6ff; }
+
+/* UML reference glyph cards */
+.glyph-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+.glyph-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.glyph-card > div { min-width: 0; }
+.glyph-card svg {
+  flex: 0 0 auto;
+  width: 72px;
+  color: var(--uml-accent);
+}
+.glyph-card h3 { margin: 0 0 0.15rem; }
+.glyph-card p { margin: 0; color: var(--pico-muted-color); font-size: 0.95rem; }
+
+.multiplicity {
+  display: grid;
+  gap: 1px 0;
+  grid-template-columns: 1fr;
+  margin-top: 1rem;
+  border: 1px solid var(--pico-muted-border-color, rgba(255, 255, 255, 0.09));
+  border-radius: var(--pico-border-radius);
+  overflow: hidden;
+  background: var(--pico-muted-border-color, rgba(255, 255, 255, 0.09));
+}
+.multiplicity div {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: var(--pico-card-background-color);
+}
+.multiplicity code {
+  color: var(--uml-accent);
+  white-space: nowrap;
+}
+.multiplicity span { color: var(--pico-muted-color); }
+
+@media (min-width: 720px) {
+  .glyph-grid { grid-template-columns: repeat(2, 1fr); }
+  .multiplicity { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .glyph-grid { grid-template-columns: repeat(4, 1fr); }
+}

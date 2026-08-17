@@ -1,109 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A concise visual revision guide to OOP principles and UML relationships for SE301.">
+  <meta name="description" content="SE301 revision — OOP principles: aggregation, composition, singleton, constructor chaining, and their UML notation.">
   <link rel="icon" href="data:,">
   <title>SE301 Revision — OOP Principles &amp; UML</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/pico.min.css">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="shell nav-inner">
-      <a class="brand" href="index.html">SE301 <span>Revision</span></a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
-          <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <nav id="site-nav" class="nav-links" aria-label="Primary">
-        <a href="plan.html">Plan</a>
-        <a href="aggregation.html">Aggregation</a>
-        <a href="composition.html">Composition</a>
-        <a href="singleton.html">Singleton</a>
-        <a href="constructor-chaining.html">Constructor</a>
-        <a href="uml-reference.html">UML</a>
-        <a href="self-check.html">Self-check</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="shell">
-    <section class="launcher" aria-labelledby="contents-title">
-      <div class="section-heading">
-        <span class="section-number">Contents</span>
-        <h2 id="contents-title">Choose a focused page</h2>
-        <p class="section-intro">Seven short routes through the revision sheet.</p>
+  <nav class="container">
+    <ul>
+      <li><strong>SE301 Revision</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#aggregation">Aggregation</a></li>
+      <li><a href="#composition">Composition</a></li>
+      <li><a href="#singleton">Singleton</a></li>
+      <li><a href="#constructor-chaining">Constructor</a></li>
+      <li><a href="#uml-reference">UML</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <hgroup>
+      <h1>OOP principles, visually</h1>
+      <p>Four concepts and the UML notation to draw them.</p>
+    </hgroup>
+
+    <section id="aggregation" aria-labelledby="aggregation-title">
+      <article>
+        <h2 id="aggregation-title">Aggregation</h2>
+        <p>A “has&#8209;a” link where parts exist independently and may be shared — drawn with a hollow diamond on the whole side.</p>
+
+        <figure>
+          <svg viewBox="0 0 300 170" role="img" aria-labelledby="aggregation-diagram-title aggregation-diagram-desc">
+            <title id="aggregation-diagram-title">Aggregation UML class diagram</title>
+            <desc id="aggregation-diagram-desc">Library aggregates one or more Books using a hollow diamond.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+              <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+              <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="#0a0a0f"/>
+              <path class="uml-accent" d="M128 84H202"/>
+            </g>
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">Library</text>
+              <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Book</text>
+              <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+              <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+              <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">aggregation</text>
+            </g>
+          </svg>
+          <figcaption>The books are created elsewhere and passed in.</figcaption>
+        </figure>
+
+        <pre><code><span class="kw">final class</span> <span class="type">Library</span> {
+  <span class="kw">private final</span> List&lt;Book&gt; books;
+  Library(List&lt;Book&gt; books) { <span class="kw">this</span>.books = books; }
+}</code></pre>
+      </article>
+    </section>
+
+    <section id="composition" aria-labelledby="composition-title">
+      <article>
+        <h2 id="composition-title">Composition</h2>
+        <p>A “has&#8209;a” link where the whole owns the parts’ lifetimes — drawn with a filled diamond on the whole side.</p>
+
+        <figure>
+          <svg viewBox="0 0 300 170" role="img" aria-labelledby="composition-diagram-title composition-diagram-desc">
+            <title id="composition-diagram-title">Composition UML class diagram</title>
+            <desc id="composition-diagram-desc">House composes one or more Rooms using a filled diamond.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+              <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+              <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="currentColor"/>
+              <path class="uml-accent" d="M128 84H202"/>
+            </g>
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">House</text>
+              <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Room</text>
+              <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+              <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+              <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">composition</text>
+            </g>
+          </svg>
+          <figcaption>The house creates its rooms in its constructor.</figcaption>
+        </figure>
+
+        
+
+        <pre><code><span class="kw">final class</span> <span class="type">House</span> {
+  <span class="kw">private final</span> List&lt;Room&gt; rooms;
+  House() {
+    rooms = List.of(<span class="kw">new</span> Room(<span class="str">"Kitchen"</span>),
+                    <span class="kw">new</span> Room(<span class="str">"Bedroom"</span>));
+  }
+}</code></pre>
+      </article>
+    </section>
+
+    <section id="singleton" aria-labelledby="singleton-title">
+      <article>
+        <h2 id="singleton-title">Singleton</h2>
+        <p>Exactly one instance, reached through a static <code>getInstance()</code>.</p>
+
+        <figure>
+          <svg viewBox="0 0 300 170" role="img" aria-labelledby="singleton-diagram-title singleton-diagram-desc">
+            <title id="singleton-diagram-title">Singleton UML class diagram</title>
+            <desc id="singleton-diagram-desc">Client A and Client B each access the same Singleton instance.</desc>
+            <defs>
+              <marker id="singleton-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0L10 5L0 10Z" fill="#6b8afd"/>
+              </marker>
+            </defs>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect class="uml-box" x="8" y="28" width="106" height="36" rx="4"/>
+              <rect class="uml-box" x="8" y="106" width="106" height="36" rx="4"/>
+              <rect class="uml-box" x="152" y="22" width="140" height="126" rx="4"/>
+              <path class="uml-box" d="M152 58H292M152 93H292"/>
+            </g>
+            <g class="uml-accent" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" marker-end="url(#singleton-arrow)">
+              <path d="M114 46H148"/>
+              <path d="M114 124H148"/>
+            </g>
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="61" y="51" text-anchor="middle" font-size="16" font-weight="750">Client A</text>
+              <text x="61" y="129" text-anchor="middle" font-size="16" font-weight="750">Client B</text>
+              <text x="222" y="49" text-anchor="middle" font-size="16" font-weight="750">Singleton</text>
+              <text x="164" y="80" font-size="16">-instance</text>
+              <text x="164" y="116" font-size="16">+ getInstance()</text>
+              <text class="uml-caption" x="150" y="164" text-anchor="middle" font-size="16">returns same instance</text>
+            </g>
+          </svg>
+          <figcaption>Client A and Client B share the same instance.</figcaption>
+        </figure>
+
+        <pre><code><span class="kw">final class</span> <span class="type">Singleton</span> {
+  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE = <span class="kw">new</span> <span class="type">Singleton</span>();
+  <span class="kw">private</span> <span class="type">Singleton</span>() {}
+  <span class="kw">static</span> <span class="type">Singleton</span> getInstance() { <span class="kw">return</span> INSTANCE; }
+}</code></pre>
+      </article>
+    </section>
+
+    <section id="constructor-chaining" aria-labelledby="constructor-chaining-title">
+      <article>
+        <h2 id="constructor-chaining-title">Constructor chaining</h2>
+        <p>No constructor declared? Java inserts a default one that calls <code>super()</code>.</p>
+
+        <figure>
+          <svg viewBox="0 0 300 230" role="img" aria-labelledby="chain-diagram-title chain-diagram-desc">
+            <title id="chain-diagram-title">Constructor chaining diagram</title>
+            <desc id="chain-diagram-desc">Child calls super(), which chains up through Parent and Grandparent to Object.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <rect class="uml-box" x="104" y="176" width="92" height="34" rx="4"/>
+              <rect class="uml-box" x="104" y="122" width="92" height="34" rx="4"/>
+              <rect class="uml-box" x="104" y="68" width="92" height="34" rx="4"/>
+              <rect class="uml-box" x="104" y="14" width="92" height="34" rx="4"/>
+              <path class="uml-accent" d="M150 174L150 160"/>
+              <path class="uml-accent" d="M150 120L150 106"/>
+              <path class="uml-accent" d="M150 66L150 52"/>
+            </g>
+            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+              <text x="150" y="197" text-anchor="middle" font-size="15" font-weight="750">Child</text>
+              <text x="150" y="143" text-anchor="middle" font-size="15" font-weight="750">Parent</text>
+              <text x="150" y="89" text-anchor="middle" font-size="15" font-weight="750">Grandparent</text>
+              <text x="150" y="35" text-anchor="middle" font-size="15" font-weight="750">Object</text>
+              <text class="uml-caption" x="168" y="172" font-size="13">super()</text>
+              <text class="uml-caption" x="168" y="118" font-size="13">super()</text>
+              <text class="uml-caption" x="168" y="64" font-size="13">super()</text>
+            </g>
+          </svg>
+          <figcaption>Child &rarr; Parent &rarr; Grandparent &rarr; Object.</figcaption>
+        </figure>
+
+        <pre><code><span class="kw">class</span> <span class="type">Grandparent</span> { }          <span class="str">// implicit: Grandparent() { super(); }</span>
+<span class="kw">class</span> <span class="type">Parent</span> <span class="kw">extends</span> <span class="type">Grandparent</span> { }   <span class="str">// implicit: Parent() { super(); }</span>
+<span class="kw">final class</span> <span class="type">Child</span> <span class="kw">extends</span> <span class="type">Parent</span> {
+  Child() { <span class="kw">super</span>(); }              <span class="str">// explicit — javac inserts this if omitted</span>
+}</code></pre>
+
+        
+      </article>
+    </section>
+
+    <section id="uml-reference" aria-labelledby="uml-reference-title">
+      <h2 id="uml-reference-title">UML at a glance</h2>
+      <div class="glyph-grid">
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Association plain line">
+            <line x1="10" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Association</h3>
+            <p>General link; no ownership implied.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Aggregation hollow diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Aggregation</h3>
+            <p>Independent parts; hollow diamond.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Composition filled diamond">
+            <path d="M10 16L22 8L34 16L22 24Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="34" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3>Composition</h3>
+            <p>Lifetime&#8209;owned parts; filled diamond.</p>
+          </div>
+        </article>
+        <article class="glyph-card">
+          <svg viewBox="0 0 120 32" role="img" aria-label="Inheritance open triangle">
+            <line x1="10" y1="16" x2="94" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M110 16L94 7L94 25Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>Inheritance</h3>
+            <p>“Is&#8209;a” link; triangle points to superclass.</p>
+          </div>
+        </article>
       </div>
 
-      <div class="contents-grid">
-        <article class="card contents-card">
-          <a href="plan.html">
-            <h3>Revision plan</h3>
-            <p>Read each prompt, then answer the test question without looking back.</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="aggregation.html">
-            <h3>Aggregation</h3>
-            <p>Parts can exist independently, outlive the whole, and be shared.</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="composition.html">
-            <h3>Composition</h3>
-            <p>The whole owns part lifetimes, so deleting it deletes its parts.</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="singleton.html">
-            <h3>Singleton</h3>
-            <p>A class that guarantees exactly one instance, reached through a static getInstance().</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="constructor-chaining.html">
-            <h3>Constructor chaining</h3>
-            <p>Constructors chain vertically up the hierarchy: Child -&gt; Parent -&gt; Grandparent -&gt; Object.</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="uml-reference.html">
-            <h3>UML reference</h3>
-            <p>Start at the symbol, then identify which class it touches.</p>
-          </a>
-        </article>
-        <article class="card contents-card">
-          <a href="self-check.html">
-            <h3>Self-check</h3>
-            <p>Choose a question to reveal its answer.</p>
-          </a>
-        </article>
+      <div class="multiplicity">
+        <div><code>1</code><span>Exactly one.</span></div>
+        <div><code>1..*</code><span>One or more.</span></div>
+        <div><code>0..*</code><span>Zero or more.</span></div>
       </div>
     </section>
+
   </main>
 
-  <footer>
-    <div class="shell">SE301 revision sheet · OOP principles and UML</div>
+  <footer class="container">
+    SE301 revision sheet &middot; OOP principles and UML
   </footer>
-  <script>
-    const header = document.querySelector(".navbar");
-    const toggle = document.querySelector(".nav-toggle");
-    const closeMenu = () => {
-      header.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    };
-    toggle.addEventListener("click", () => {
-      const open = header.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeMenu();
-    });
-    document.addEventListener("click", (event) => {
-      if (!header.contains(event.target)) closeMenu();
-    });
-  </script>
+
 </body>
 </html>
