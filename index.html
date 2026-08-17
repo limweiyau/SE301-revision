@@ -16,8 +16,8 @@
       --accent-soft: #edf3ff;
       --line: #dfe4ec;
       --code: #162033;
-      --shadow: 0 12px 32px rgba(28, 37, 48, 0.07);
-      --radius: 18px;
+      --shadow: 0 4px 14px rgba(28, 37, 48, 0.05);
+      --radius: 12px;
     }
 
     * {
@@ -33,8 +33,8 @@
       background: var(--page);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.55;
     }
 
     a {
@@ -47,29 +47,16 @@
     }
 
     .site-header {
-      position: relative;
-      overflow: hidden;
-      padding: 28px 0 42px;
+      padding: 20px 0 24px;
       border-bottom: 1px solid var(--line);
       background: var(--card);
-    }
-
-    .site-header::after {
-      position: absolute;
-      top: -88px;
-      right: -96px;
-      width: 240px;
-      height: 240px;
-      border: 36px solid var(--accent-soft);
-      border-radius: 50%;
-      content: "";
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin: 0 0 12px;
+      margin: 0 0 8px;
       color: var(--accent);
       font-size: 1rem;
       font-weight: 800;
@@ -92,63 +79,82 @@
     }
 
     h1 {
-      position: relative;
-      z-index: 1;
       max-width: 820px;
-      margin-bottom: 12px;
-      font-size: clamp(2rem, 7vw, 4.15rem);
+      margin-bottom: 8px;
+      font-size: clamp(2rem, 6vw, 3.25rem);
       line-height: 1.05;
       letter-spacing: -0.045em;
     }
 
     .lede {
-      position: relative;
-      z-index: 1;
       max-width: 620px;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .jump-links {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .jump-links a {
-      padding: 7px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--page);
+      margin-bottom: 0;
       color: var(--muted);
       font-size: 1rem;
+    }
+
+    .contents-panel {
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .contents-panel .shell {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 16px;
+      padding: 10px 0;
+    }
+
+    .contents-label {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .contents-list {
+      display: flex;
+      flex: 1 1 500px;
+      flex-wrap: wrap;
+      gap: 2px 8px;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contents-list a {
+      color: var(--muted);
       font-weight: 700;
       text-decoration: none;
     }
 
-    .jump-links a:hover,
-    .jump-links a:focus-visible {
-      border-color: var(--accent);
+    .contents-number {
+      margin-right: 4px;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .contents-list a:hover,
+    .contents-list a:focus-visible {
       color: var(--accent);
       outline: none;
+      text-decoration: underline;
     }
 
     main {
-      padding: 64px 0 80px;
+      padding: 28px 0 40px;
     }
 
     section + section {
-      margin-top: 72px;
+      margin-top: 32px;
     }
 
     .section-heading {
       display: grid;
-      gap: 8px;
+      gap: 4px;
       max-width: 70ch;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
     }
 
     .section-number {
@@ -161,24 +167,25 @@
 
     h2 {
       margin-bottom: 0;
-      font-size: clamp(1.9rem, 5vw, 2.75rem);
+      font-size: clamp(1.7rem, 4vw, 2.25rem);
       line-height: 1.15;
       letter-spacing: -0.035em;
     }
 
     h3 {
-      margin-bottom: 8px;
-      font-size: 1.12rem;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
       line-height: 1.3;
     }
 
     .section-intro {
       max-width: 70ch;
-      margin: 4px 0 0;
+      margin: 2px 0 0;
       color: var(--muted);
     }
 
     .card {
+      min-width: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--card);
@@ -187,7 +194,7 @@
 
     .study-list {
       width: 100%;
-      max-width: 70ch;
+      max-width: 78ch;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -195,9 +202,9 @@
 
     .study-item {
       display: grid;
-      grid-template-columns: 56px minmax(0, 1fr);
-      gap: 16px;
-      padding: 24px 0;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
       border-bottom: 1px solid var(--line);
     }
 
@@ -207,10 +214,14 @@
 
     .study-number {
       color: var(--accent);
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       font-weight: 850;
       line-height: 1.2;
       letter-spacing: -0.04em;
+    }
+
+    .study-item h3 {
+      margin-bottom: 2px;
     }
 
     .study-item p {
@@ -222,30 +233,48 @@
       margin-bottom: 0;
     }
 
+    .study-test {
+      margin-left: 1em;
+    }
+
     .label {
       color: var(--ink);
       font-weight: 750;
     }
 
-    .definition-grid,
-    .code-grid,
+    .concept-grid,
     .reference-grid {
       display: grid;
       gap: 16px;
     }
 
-    .definition-card {
-      padding: 24px;
-      border-top: 4px solid var(--accent);
+    .concept-card {
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
     }
 
-    .definition-card p {
+    .concept-card > p {
       margin-bottom: 8px;
       color: var(--muted);
     }
 
-    .definition-card p:last-child {
+    .concept-card > p:last-of-type {
       margin-bottom: 0;
+    }
+
+    .card-kicker {
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .concept-note {
+      margin: 0 0 10px;
+      color: var(--muted);
     }
 
     .diamond-label {
@@ -272,42 +301,72 @@
       background: currentColor;
     }
 
-    .diagram-card {
-      margin-top: 16px;
-      padding: 18px;
-      overflow: hidden;
+    .mini-diagram {
+      width: 100%;
+      margin: 14px auto;
+      text-align: center;
     }
 
-    .diagram-card svg {
+    .mini-diagram svg {
       display: block;
       width: 100%;
+      max-width: 260px;
       height: auto;
+      margin: 0 auto;
       color: var(--ink);
     }
 
-    .diagram-card .uml-box {
+    .mini-diagram .uml-box {
       fill: #ffffff;
       stroke: #aeb9c8;
     }
 
-    .diagram-card .uml-accent {
+    .mini-diagram .uml-accent {
       color: var(--accent);
     }
 
-    .diagram-card .uml-caption {
+    .mini-diagram .uml-caption {
       fill: var(--muted);
     }
 
-    .diagram-card figcaption {
-      padding: 10px 6px 2px;
+    .mini-diagram figcaption {
+      padding: 6px 0 0;
       color: var(--muted);
       font-size: 1rem;
       text-align: center;
     }
 
-    .table-card {
-      margin-top: 16px;
-      overflow: hidden;
+    .example-card,
+    .comparison-details {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      box-shadow: none;
+    }
+
+    .concept-card > .example-card {
+      margin-top: auto;
+    }
+
+    .example-card summary,
+    .comparison-details summary {
+      padding: 11px 12px;
+      font-size: 1rem;
+    }
+
+    .example-kind {
+      margin-left: auto;
+      margin-right: 14px;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .example-content {
+      border-top: 1px solid var(--line);
     }
 
     table {
@@ -320,7 +379,7 @@
 
     th,
     td {
-      padding: 14px 12px;
+      padding: 8px 9px;
       border-bottom: 1px solid var(--line);
       vertical-align: top;
     }
@@ -351,7 +410,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
+      padding: 10px 12px;
       border-bottom: 1px solid #2a3851;
       background: #1c2940;
       color: #ffffff;
@@ -359,6 +418,10 @@
 
     .code-title h3 {
       margin: 0;
+      font-size: 1rem;
+    }
+
+    .code-title small {
       font-size: 1rem;
     }
 
@@ -372,12 +435,14 @@
 
     pre {
       margin: 0;
-      padding: 20px 18px 22px;
-      overflow-x: auto;
+      padding: 12px;
+      overflow: auto;
       background: var(--code);
       color: #dce6f7;
       font: 1rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       tab-size: 2;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
     }
 
     .kw {
@@ -393,11 +458,18 @@
     }
 
     .code-note {
-      padding: 14px 18px;
+      padding: 10px 12px;
       border-top: 1px solid var(--line);
       background: var(--card);
       color: var(--muted);
       font-size: 1rem;
+    }
+
+    .constructor-code {
+      margin-top: auto;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
     }
 
     .reference-card {
@@ -405,7 +477,7 @@
       grid-template-columns: 88px 1fr;
       gap: 14px;
       align-items: center;
-      padding: 20px;
+      padding: 12px;
     }
 
     .reference-card svg {
@@ -424,10 +496,10 @@
     .multiplicity-strip {
       display: grid;
       gap: 1px;
-      margin-top: 16px;
+      margin-top: 12px;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 10px;
       background: var(--line);
     }
 
@@ -435,7 +507,7 @@
       display: grid;
       grid-template-columns: 58px 1fr;
       gap: 12px;
-      padding: 15px 18px;
+      padding: 10px 12px;
       background: var(--card);
     }
 
@@ -449,35 +521,24 @@
       color: var(--muted);
     }
 
-    .singleton-grid {
-      display: grid;
-      gap: 16px;
-      max-width: 70ch;
-    }
-
-    .singleton-grid > * {
-      min-width: 0;
-      margin-top: 0;
-    }
-
     .check-list {
       display: grid;
-      gap: 10px;
+      gap: 6px;
       max-width: 70ch;
     }
 
     details {
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 10px;
       background: var(--card);
-      box-shadow: 0 5px 18px rgba(28, 37, 48, 0.04);
+      box-shadow: none;
     }
 
     summary {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      padding: 17px 18px;
+      padding: 11px 12px;
       cursor: pointer;
       font-weight: 750;
       list-style: none;
@@ -504,7 +565,7 @@
 
     details p {
       margin: 0;
-      padding: 0 18px 17px;
+      padding: 0 12px 11px;
       color: var(--muted);
     }
 
@@ -514,7 +575,7 @@
     }
 
     footer {
-      padding: 24px 0;
+      padding: 16px 0;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 1rem;
@@ -527,35 +588,21 @@
       }
 
       .site-header {
-        padding: 48px 0 58px;
+        padding: 24px 0 28px;
       }
 
       main {
-        padding-top: 72px;
+        padding-top: 32px;
       }
 
       .study-item {
-        grid-template-columns: 72px minmax(0, 1fr);
-        gap: 20px;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 14px;
       }
 
-      .definition-grid,
-      .code-grid,
+      .concept-grid,
       .reference-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .diagram-card {
-        padding: 30px;
-      }
-
-      table {
-        font-size: 1rem;
-      }
-
-      th,
-      td {
-        padding: 16px 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .multiplicity-strip {
@@ -564,11 +611,6 @@
     }
 
     @media (min-width: 1000px) {
-      .singleton-grid {
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        max-width: none;
-      }
-
       .reference-grid {
         grid-template-columns: repeat(4, 1fr);
       }
@@ -595,16 +637,23 @@
       <p class="eyebrow">Visual study sheet</p>
       <h1>SE301 Revision — OOP Principles &amp; UML</h1>
       <p class="lede">Use the plan to recall the basics, then focus on whole-part relationships and their UML notation.</p>
-      <nav class="jump-links" aria-label="Page sections">
-        <a href="#plan">Revision plan</a>
-        <a href="#whole-part">Core comparison</a>
-        <a href="#singleton">Singleton</a>
-        <a href="#examples">Java examples</a>
-        <a href="#uml-reference">UML reference</a>
-        <a href="#self-check">Self-check</a>
-      </nav>
     </div>
   </header>
+
+  <nav id="contents" class="contents-panel" aria-label="Contents">
+    <div class="shell">
+      <span class="contents-label">Contents</span>
+      <ol class="contents-list">
+        <li><a href="#plan"><span class="contents-number" aria-hidden="true">01</span>Revision plan</a></li>
+        <li><a href="#aggregation"><span class="contents-number" aria-hidden="true">02</span>Aggregation</a></li>
+        <li><a href="#composition"><span class="contents-number" aria-hidden="true">03</span>Composition</a></li>
+        <li><a href="#singleton"><span class="contents-number" aria-hidden="true">04</span>Singleton</a></li>
+        <li><a href="#constructor-chaining"><span class="contents-number" aria-hidden="true">05</span>Java examples</a></li>
+        <li><a href="#uml-reference"><span class="contents-number" aria-hidden="true">06</span>UML reference</a></li>
+        <li><a href="#self-check"><span class="contents-number" aria-hidden="true">07</span>Self-check</a></li>
+      </ol>
+    </div>
+  </nav>
 
   <main class="shell">
     <section id="plan" aria-labelledby="plan-title">
@@ -619,48 +668,42 @@
           <span class="study-number" aria-hidden="true">01</span>
           <div>
             <h3>Objects vs classes</h3>
-            <p><span class="label">Know this:</span> A class defines a type; an object is an instance of it.</p>
-            <p><span class="label">Test yourself:</span> How does an object differ from its class?</p>
+            <p><span class="label">Know this:</span> A class defines a type; an object is an instance of it.<span class="study-test"><span class="label">Test yourself:</span> How does an object differ from its class?</span></p>
           </div>
         </li>
         <li class="study-item">
           <span class="study-number" aria-hidden="true">02</span>
           <div>
             <h3>Encapsulation</h3>
-            <p><span class="label">Know this:</span> Keep data private and control access through methods.</p>
-            <p><span class="label">Test yourself:</span> Why should a field often be private?</p>
+            <p><span class="label">Know this:</span> Keep data private and control access through methods.<span class="study-test"><span class="label">Test yourself:</span> Why should a field often be private?</span></p>
           </div>
         </li>
         <li class="study-item">
           <span class="study-number" aria-hidden="true">03</span>
           <div>
             <h3>Inheritance</h3>
-            <p><span class="label">Know this:</span> A subclass can reuse and extend a superclass.</p>
-            <p><span class="label">Test yourself:</span> Which class receives inherited members?</p>
+            <p><span class="label">Know this:</span> A subclass can reuse and extend a superclass.<span class="study-test"><span class="label">Test yourself:</span> Which class receives inherited members?</span></p>
           </div>
         </li>
         <li class="study-item">
           <span class="study-number" aria-hidden="true">04</span>
           <div>
             <h3>Polymorphism</h3>
-            <p><span class="label">Know this:</span> One reference can use different subclass implementations.</p>
-            <p><span class="label">Test yourself:</span> Which overridden method runs at runtime?</p>
+            <p><span class="label">Know this:</span> One reference can use different subclass implementations.<span class="study-test"><span class="label">Test yourself:</span> Which overridden method runs at runtime?</span></p>
           </div>
         </li>
         <li class="study-item">
           <span class="study-number" aria-hidden="true">05</span>
           <div>
             <h3>Aggregation vs composition</h3>
-            <p><span class="label">Know this:</span> Both are whole-part links, but ownership differs.</p>
-            <p><span class="label">Test yourself:</span> Which one controls a part's lifetime?</p>
+            <p><span class="label">Know this:</span> Both are whole-part links, but ownership differs.<span class="study-test"><span class="label">Test yourself:</span> Which one controls a part's lifetime?</span></p>
           </div>
         </li>
         <li class="study-item">
           <span class="study-number" aria-hidden="true">06</span>
           <div>
             <h3>Singleton</h3>
-            <p><span class="label">Know this:</span> A class that guarantees exactly one instance, reached through a static getInstance().</p>
-            <p><span class="label">Test yourself:</span> Why can you not use new? How do you get the instance?</p>
+            <p><span class="label">Know this:</span> A class that guarantees exactly one instance, reached through a static getInstance().<span class="study-test"><span class="label">Test yourself:</span> Why can you not use new? How do you get the instance?</span></p>
           </div>
         </li>
       </ol>
@@ -673,165 +716,42 @@
         <p class="section-intro">Both are “has-a” whole-part relationships. The difference is how strongly the whole owns its parts.</p>
       </div>
 
-      <div class="definition-grid">
-        <article class="card definition-card">
+      <div class="concept-grid">
+        <article id="aggregation" class="card concept-card" aria-labelledby="aggregation-title">
           <span class="diamond-label"><span class="diamond" aria-hidden="true"></span>Aggregation</span>
-          <h3>Parts stay independent</h3>
+          <h3 id="aggregation-title">Parts stay independent</h3>
           <p>Aggregation is a “has-a” relationship where parts can exist independently, outlive the whole, and be shared.</p>
           <p>UML places a hollow diamond on the whole side.</p>
-        </article>
-        <article class="card definition-card">
-          <span class="diamond-label"><span class="diamond filled" aria-hidden="true"></span>Composition</span>
-          <h3>The whole owns the lifetime</h3>
-          <p>Composition is a “has-a” relationship where parts cannot exist without the whole.</p>
-          <p>The whole owns their lifetimes, so deleting it deletes its parts; UML uses a filled diamond.</p>
-        </article>
-      </div>
 
-      <figure class="card diagram-card">
-        <svg viewBox="0 0 760 430" role="img" aria-labelledby="uml-diagram-title uml-diagram-desc">
-          <title id="uml-diagram-title">Aggregation and composition UML class diagram</title>
-          <desc id="uml-diagram-desc">Library aggregates one or more Books using a hollow diamond. House composes one or more Rooms using a filled diamond.</desc>
+          <figure class="mini-diagram">
+            <svg viewBox="0 0 300 170" role="img" aria-labelledby="aggregation-diagram-title aggregation-diagram-desc">
+              <title id="aggregation-diagram-title">Aggregation UML class diagram</title>
+              <desc id="aggregation-diagram-desc">Library aggregates one or more Books using a hollow diamond.</desc>
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+                <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+                <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="#ffffff"/>
+                <path class="uml-accent" d="M128 84H202"/>
+              </g>
+              <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+                <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">Library</text>
+                <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Book</text>
+                <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+                <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+                <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">aggregation</text>
+              </g>
+            </svg>
+            <figcaption>The diamond sits beside the whole: Library or House.</figcaption>
+          </figure>
 
-          <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path class="uml-box" d="M40 49C38 49 36 51 36 54V145C36 148 38 150 41 150H266C269 150 271 148 271 145V54C271 51 269 49 266 49Z"/>
-            <path class="uml-box" d="M489 49C486 49 484 51 484 54V145C484 148 486 150 489 150H714C717 150 719 148 719 145V54C719 51 717 49 714 49Z"/>
-            <path class="uml-accent" d="M271 99L289 86L307 99L289 112Z" fill="#ffffff"/>
-            <path class="uml-accent" d="M307 99C348 98 430 101 484 99"/>
-
-            <path class="uml-box" d="M40 275C38 275 36 277 36 280V371C36 374 38 376 41 376H266C269 376 271 374 271 371V280C271 277 269 275 266 275Z"/>
-            <path class="uml-box" d="M489 275C486 275 484 277 484 280V371C484 374 486 376 489 376H714C717 376 719 374 719 371V280C719 277 717 275 714 275Z"/>
-            <path class="uml-accent" d="M271 325L289 312L307 325L289 338Z" fill="currentColor"/>
-            <path class="uml-accent" d="M307 325C348 324 430 327 484 325"/>
-          </g>
-
-          <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
-            <text x="153" y="106" text-anchor="middle" font-size="23" font-weight="750">Library</text>
-            <text x="602" y="106" text-anchor="middle" font-size="23" font-weight="750">Book</text>
-            <text x="278" y="78" text-anchor="middle" font-size="16" font-weight="750">1</text>
-            <text x="455" y="78" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
-            <text class="uml-caption" x="378" y="132" text-anchor="middle" font-size="16">aggregation</text>
-
-            <text x="153" y="332" text-anchor="middle" font-size="23" font-weight="750">House</text>
-            <text x="602" y="332" text-anchor="middle" font-size="23" font-weight="750">Room</text>
-            <text x="278" y="304" text-anchor="middle" font-size="16" font-weight="750">1</text>
-            <text x="455" y="304" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
-            <text class="uml-caption" x="378" y="358" text-anchor="middle" font-size="16">composition</text>
-          </g>
-        </svg>
-        <figcaption>The diamond sits beside the whole: Library or House.</figcaption>
-      </figure>
-
-      <div class="card table-card">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Compare</th>
-              <th scope="col">Aggregation</th>
-              <th scope="col">Composition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Lifetime</td>
-              <td>Parts can outlive the whole.</td>
-              <td>The whole owns part lifetimes.</td>
-            </tr>
-            <tr>
-              <td>Sharing</td>
-              <td>A part may be shared.</td>
-              <td>A part belongs to one whole at a time.</td>
-            </tr>
-            <tr>
-              <td>Delete whole</td>
-              <td>Parts can remain.</td>
-              <td>Parts are deleted too.</td>
-            </tr>
-            <tr>
-              <td>UML</td>
-              <td>Hollow diamond.</td>
-              <td>Filled diamond.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="singleton" aria-labelledby="singleton-title">
-      <div class="section-heading">
-        <span class="section-number">03 / Singleton</span>
-        <h2 id="singleton-title">Singleton — one instance only</h2>
-        <p class="section-intro">A Singleton provides one shared instance when an application needs a single point of access.</p>
-      </div>
-
-      <div class="singleton-grid">
-        <figure class="card diagram-card">
-          <svg viewBox="0 0 760 310" role="img" aria-labelledby="singleton-diagram-title singleton-diagram-desc">
-            <title id="singleton-diagram-title">Singleton UML class diagram</title>
-            <desc id="singleton-diagram-desc">Client A, Client B, and Client C each access the same Singleton instance.</desc>
-            <defs>
-              <marker id="singleton-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0 0L10 5L0 10Z" fill="#2f6fed"/>
-              </marker>
-            </defs>
-
-            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect class="uml-box" x="40" y="28" width="200" height="64" rx="4"/>
-              <rect class="uml-box" x="40" y="120" width="200" height="64" rx="4"/>
-              <rect class="uml-box" x="40" y="212" width="200" height="64" rx="4"/>
-              <rect class="uml-box" x="430" y="28" width="290" height="248" rx="4"/>
-              <path class="uml-box" d="M430 92H720M430 162H720"/>
-            </g>
-
-            <g class="uml-accent" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" marker-end="url(#singleton-arrow)">
-              <path d="M240 60H420"/>
-              <path d="M240 152H420"/>
-              <path d="M240 244H420"/>
-            </g>
-
-            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
-              <text x="140" y="67" text-anchor="middle" font-size="19" font-weight="750">Client A</text>
-              <text x="140" y="159" text-anchor="middle" font-size="19" font-weight="750">Client B</text>
-              <text x="140" y="251" text-anchor="middle" font-size="19" font-weight="750">Client C</text>
-              <text x="575" y="69" text-anchor="middle" font-size="22" font-weight="750">Singleton</text>
-              <text x="452" y="134" font-size="18">-instance</text>
-              <text x="452" y="207" font-size="18">+ getInstance()</text>
-              <text class="uml-caption" x="330" y="298" text-anchor="middle" font-size="17">returns same instance</text>
-            </g>
-          </svg>
-        </figure>
-
-        <article class="card code-card">
-          <div class="code-title">
-            <h3>Singleton</h3>
-            <span>Java</span>
-          </div>
-          <pre><code><span class="kw">public class</span> <span class="type">Singleton</span> {
-  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE =
-      <span class="kw">new</span> <span class="type">Singleton</span>();
-  <span class="kw">private</span> <span class="type">Singleton</span>() {}
-  <span class="kw">public static</span> <span class="type">Singleton</span> getInstance() {
-    <span class="kw">return</span> INSTANCE;
-  }
-}</code></pre>
-        </article>
-      </div>
-    </section>
-
-    <section id="examples" aria-labelledby="examples-title">
-      <div class="section-heading">
-        <span class="section-number">04 / Tiny code examples</span>
-        <h2 id="examples-title">See ownership in Java</h2>
-        <p class="section-intro">Look at where each part is created. That choice signals the intended lifetime.<br>If a class declares no constructor, Java inserts a default one.</p>
-      </div>
-
-      <div class="code-grid">
-        <article class="card code-card">
-          <div class="code-title">
-            <h3>Aggregation</h3>
-            <span>Java</span>
-          </div>
-          <pre><code><span class="kw">import</span> java.util.List;
+          <details class="example-card">
+            <summary><span>Aggregation Java example</span><span class="example-kind">Java</span></summary>
+            <div class="example-content code-card">
+              <div class="code-title">
+                <h3>Aggregation</h3>
+                <span>Java</span>
+              </div>
+              <pre><code><span class="kw">import</span> java.util.List;
 
 <span class="kw">final class</span> <span class="type">Book</span> { }
 
@@ -841,15 +761,80 @@
     <span class="kw">this</span>.books = books;
   }
 }</code></pre>
-          <p class="code-note">The books are created elsewhere and passed into the library.</p>
+              <p class="code-note">The books are created elsewhere and passed into the library.</p>
+            </div>
+          </details>
         </article>
 
-        <article class="card code-card">
-          <div class="code-title">
-            <h3>Composition</h3>
-            <span>Java</span>
-          </div>
-          <pre><code><span class="kw">import</span> java.util.List;
+        <article id="composition" class="card concept-card" aria-labelledby="composition-title">
+          <span class="diamond-label"><span class="diamond filled" aria-hidden="true"></span>Composition</span>
+          <h3 id="composition-title">The whole owns the lifetime</h3>
+          <p>Composition is a “has-a” relationship where parts cannot exist without the whole.</p>
+          <p>The whole owns their lifetimes, so deleting it deletes its parts; UML uses a filled diamond.</p>
+
+          <figure class="mini-diagram">
+            <svg viewBox="0 0 300 170" role="img" aria-labelledby="composition-diagram-title composition-diagram-desc">
+              <title id="composition-diagram-title">Composition UML class diagram</title>
+              <desc id="composition-diagram-desc">House composes one or more Rooms using a filled diamond.</desc>
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
+                <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
+                <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="currentColor"/>
+                <path class="uml-accent" d="M128 84H202"/>
+              </g>
+              <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+                <text x="56" y="89" text-anchor="middle" font-size="16" font-weight="750">House</text>
+                <text x="245" y="89" text-anchor="middle" font-size="16" font-weight="750">Room</text>
+                <text x="105" y="66" text-anchor="middle" font-size="16" font-weight="750">1</text>
+                <text x="187" y="66" text-anchor="middle" font-size="16" font-weight="750">1..*</text>
+                <text class="uml-caption" x="150" y="141" text-anchor="middle" font-size="16">composition</text>
+              </g>
+            </svg>
+          </figure>
+
+          <details class="comparison-details">
+            <summary>Aggregation vs composition</summary>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Compare</th>
+                  <th scope="col">Aggregation</th>
+                  <th scope="col">Composition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lifetime</td>
+                  <td>Parts can outlive the whole.</td>
+                  <td>The whole owns part lifetimes.</td>
+                </tr>
+                <tr>
+                  <td>Sharing</td>
+                  <td>A part may be shared.</td>
+                  <td>A part belongs to one whole at a time.</td>
+                </tr>
+                <tr>
+                  <td>Delete whole</td>
+                  <td>Parts can remain.</td>
+                  <td>Parts are deleted too.</td>
+                </tr>
+                <tr>
+                  <td>UML</td>
+                  <td>Hollow diamond.</td>
+                  <td>Filled diamond.</td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
+          <details class="example-card">
+            <summary><span>Composition Java example</span><span class="example-kind">Java</span></summary>
+            <div class="example-content code-card">
+              <div class="code-title">
+                <h3>Composition</h3>
+                <span>Java</span>
+              </div>
+              <pre><code><span class="kw">import</span> java.util.List;
 
 <span class="kw">record</span> <span class="type">Room</span>(String name) { }
 
@@ -860,21 +845,83 @@
                     <span class="kw">new</span> Room(<span class="str">"Bedroom"</span>));
   }
 }</code></pre>
-          <p class="code-note">The house creates its rooms and controls their lifetime.</p>
+              <p class="code-note">The house creates its rooms and controls their lifetime.</p>
+            </div>
+          </details>
         </article>
 
-        <article class="card code-card">
-          <div class="code-title">
-            <h3>Constructor chaining<br><small>default constructors</small></h3>
-            <span>Java</span>
-          </div>
-          <pre><code><span class="kw">class</span> <span class="type">Grandparent</span> { }                              // implicit default constructor: Grandparent() { super(); }
+        <article id="singleton" class="card concept-card" aria-labelledby="singleton-title">
+          <span class="card-kicker">03 / Singleton</span>
+          <h3 id="singleton-title">Singleton — one instance only</h3>
+          <p>A Singleton provides one shared instance when an application needs a single point of access.</p>
+
+          <figure class="mini-diagram">
+            <svg viewBox="0 0 300 170" role="img" aria-labelledby="singleton-diagram-title singleton-diagram-desc">
+              <title id="singleton-diagram-title">Singleton UML class diagram</title>
+              <desc id="singleton-diagram-desc">Client A and Client B each access the same Singleton instance.</desc>
+              <defs>
+                <marker id="singleton-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0 0L10 5L0 10Z" fill="#2f6fed"/>
+                </marker>
+              </defs>
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect class="uml-box" x="8" y="28" width="106" height="36" rx="4"/>
+                <rect class="uml-box" x="8" y="106" width="106" height="36" rx="4"/>
+                <rect class="uml-box" x="152" y="22" width="140" height="126" rx="4"/>
+                <path class="uml-box" d="M152 58H292M152 93H292"/>
+              </g>
+              <g class="uml-accent" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" marker-end="url(#singleton-arrow)">
+                <path d="M114 46H148"/>
+                <path d="M114 124H148"/>
+              </g>
+              <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+                <text x="61" y="51" text-anchor="middle" font-size="16" font-weight="750">Client A</text>
+                <text x="61" y="129" text-anchor="middle" font-size="16" font-weight="750">Client B</text>
+                <text x="222" y="49" text-anchor="middle" font-size="16" font-weight="750">Singleton</text>
+                <text x="164" y="80" font-size="16">-instance</text>
+                <text x="164" y="116" font-size="16">+ getInstance()</text>
+                <text class="uml-caption" x="150" y="164" text-anchor="middle" font-size="16">returns same instance</text>
+              </g>
+            </svg>
+          </figure>
+
+          <details class="example-card">
+            <summary><span>Singleton Java example</span><span class="example-kind">Java</span></summary>
+            <div class="example-content code-card">
+              <div class="code-title">
+                <h3>Singleton</h3>
+                <span>Java</span>
+              </div>
+              <pre><code><span class="kw">public class</span> <span class="type">Singleton</span> {
+  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE =
+      <span class="kw">new</span> <span class="type">Singleton</span>();
+  <span class="kw">private</span> <span class="type">Singleton</span>() {}
+  <span class="kw">public static</span> <span class="type">Singleton</span> getInstance() {
+    <span class="kw">return</span> INSTANCE;
+  }
+}</code></pre>
+            </div>
+          </details>
+        </article>
+
+        <article id="constructor-chaining" class="card concept-card" aria-labelledby="examples-title">
+          <span class="card-kicker">04 / Tiny code examples</span>
+          <h3 id="examples-title">See ownership in Java</h3>
+          <p class="concept-note">Look at where each part is created. That choice signals the intended lifetime.<br>If a class declares no constructor, Java inserts a default one.</p>
+
+          <div class="constructor-code code-card">
+            <div class="code-title">
+              <h3>Constructor chaining<br><small>default constructors</small></h3>
+              <span>Java</span>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="type">Grandparent</span> { }                              // implicit default constructor: Grandparent() { super(); }
 <span class="kw">class</span> <span class="type">Parent</span> <span class="kw">extends</span> <span class="type">Grandparent</span> { }               // implicit: Parent() { super(); } -&gt; chains up to Grandparent
 <span class="kw">final class</span> <span class="type">Child</span> <span class="kw">extends</span> <span class="type">Parent</span> {
   Child() { <span class="kw">super</span>(); }                             // explicit, writes the chain by hand
   // if omitted, javac inserts this exact super() call
 }</code></pre>
-          <p class="code-note">Constructors chain vertically up the hierarchy: Child -&gt; Parent -&gt; Grandparent -&gt; Object. A default constructor appears when none is declared.</p>
+            <p class="code-note">Constructors chain vertically up the hierarchy: Child -&gt; Parent -&gt; Grandparent -&gt; Object. A default constructor appears when none is declared.</p>
+          </div>
         </article>
       </div>
     </section>
