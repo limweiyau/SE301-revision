@@ -226,12 +226,12 @@ hgroup p { color: var(--pico-muted-color); margin: 0; }
 .topic-list a:hover::after,
 .topic-list a:focus-visible::after { opacity: 1; transform: translateX(3px) rotate(45deg); }
 
-article { margin-bottom: 1.5rem; }
+article { margin-bottom: 1.5rem; padding: 1.1rem 1.2rem; }
 article h2 { margin: 0 0 0.6rem; }
 article > p:last-child { margin-bottom: 0; }
 
 /* ---------- Diagrams ---------- */
-figure { margin: 0.75rem 0 1.25rem; }
+figure { margin: 0.75rem 0 0.5rem; }
 article h2 { margin: 0 0 0.6rem; }
 figure svg {
   display: block;
@@ -256,11 +256,11 @@ pre {
   white-space: pre-wrap;
   overflow-wrap: break-word;
   overflow-x: hidden;
-  padding: 0.7rem 0.85rem;
+  padding: 0.6rem 0.85rem 0.4rem;
   font-size: clamp(10px, 0.8vw + 0.35rem, 12.5px);
-  line-height: 1.5;
+  line-height: 1.45;
 }
-pre code { font-size: 1em; line-height: 1.5; }
+pre code { font-size: 1em; line-height: 1.45; }
 pre code .kw { color: #ff7b72; }
 pre code .type { color: #79c0ff; }
 pre code .str { color: #a5d6ff; }
