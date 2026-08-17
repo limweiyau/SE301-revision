@@ -5,7 +5,8 @@
 set -e
 
 REPO=/workspace/SE301-revision
-HOST_SITE=/host/srv/se301-revision
+HOST_SITE=/host/srv/se301-revision   # container view of host /srv/se301-revision
+DAEMON_SITE=/srv/se301-revision      # host-side path for docker -v (daemon resolves on HOST)
 
 # 1. Sync repo -> host-visible serving dir (root needed to write /host/srv)
 docker exec hermes sh -c "mkdir -p $HOST_SITE && rm -rf $HOST_SITE/* $HOST_SITE/.[!.]* 2>/dev/null; cp -a $REPO/. $HOST_SITE/ && chown -R 10000:10000 $HOST_SITE"
@@ -14,7 +15,7 @@ echo "synced -> $HOST_SITE"
 # 2. Site container: survives reboot via restart policy
 if ! docker inspect se301-site >/dev/null 2>&1; then
   docker run -d --name se301-site --restart unless-stopped \
-    -v /host/srv/se301-revision:/srv/site:ro \
+    -v "$DAEMON_SITE":/srv/site:ro \
     -p 127.0.0.1:8080:8080 \
     python:3.12-slim \
     python3 -m http.server 8080 --bind 0.0.0.0 --directory /srv/site
