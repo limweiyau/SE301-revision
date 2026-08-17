@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="UML diagrams and notation.">
+  <meta name="description" content="Singleton and constructor chaining.">
   <link rel="icon" href="data:,">
-  <title>UML | SE301 Revision</title>
+  <title>Principles | SE301 Revision</title>
   <link rel="stylesheet" href="assets/pico.min.css?v=2">
   <link rel="stylesheet" href="assets/site.css?v=3">
 </head>
@@ -21,90 +21,15 @@
       </button>
       <ul id="nav-links" class="nav-links">
         <li><a href="generics.html">Generics</a></li>
-        <li><a href="uml.html" aria-current="page">UML</a></li>
-        <li><a href="patterns.html">Principles</a></li>
+        <li><a href="uml.html">UML</a></li>
+        <li><a href="patterns.html" aria-current="page">Principles</a></li>
       </ul>
     </div>
   </header>
   <main class="container">
     <article>
-      <h2>UML diagrams</h2>
-      <p>Four relationship symbols, then two example diagrams.</p>
-
-      <div class="glyph-grid">
-        <div class="card glyph-card">
-          <svg viewBox="0 0 120 32" role="img" aria-label="Association plain line">
-            <line x1="8" y1="16" x2="112" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          <div><h3>Association</h3><p>General link.</p></div>
-        </div>
-        <div class="card glyph-card">
-          <svg viewBox="0 0 120 32" role="img" aria-label="Aggregation hollow diamond">
-            <path d="M8 16L20 8L32 16L20 24Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <line x1="32" y1="16" x2="112" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          <div><h3>Aggregation</h3><p>Hollow diamond.</p></div>
-        </div>
-        <div class="card glyph-card">
-          <svg viewBox="0 0 120 32" role="img" aria-label="Composition filled diamond">
-            <path d="M8 16L20 8L32 16L20 24Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <line x1="32" y1="16" x2="112" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          <div><h3>Composition</h3><p>Filled diamond.</p></div>
-        </div>
-        <div class="card glyph-card">
-          <svg viewBox="0 0 120 32" role="img" aria-label="Inheritance open triangle">
-            <line x1="8" y1="16" x2="92" y2="16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M112 16L92 6L92 26Z" fill="#0a0a0f" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-          </svg>
-          <div><h3>Inheritance</h3><p>Triangle to superclass.</p></div>
-        </div>
-      </div>
-
-      <div class="multiplicity">
-        <div><code>1</code><span>Exactly one.</span></div>
-        <div><code>1..*</code><span>One or more.</span></div>
-        <div><code>0..*</code><span>Zero or more.</span></div>
-      </div>
-
-      <h2 style="margin-top:1.2rem">Example diagrams</h2>
-        <figure>
-          <svg viewBox="0 0 300 170" role="img" aria-label="Aggregation: Library aggregates Books (hollow diamond)">
-            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
-              <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
-              <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="#0a0a0f"/>
-              <path class="uml-accent" d="M128 84H202"/>
-            </g>
-            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15">
-              <text x="56" y="89" text-anchor="middle" font-weight="700">Library</text>
-              <text x="245" y="89" text-anchor="middle" font-weight="700">Book</text>
-              <text x="106" y="68" text-anchor="middle">1</text>
-              <text x="186" y="68" text-anchor="middle">1..*</text>
-              <text class="uml-caption" x="150" y="138" text-anchor="middle" font-size="13">aggregation</text>
-            </g>
-          </svg>
-          <figcaption>Aggregation — hollow diamond on the whole side.</figcaption>
-        </figure>
-        <figure>
-          <svg viewBox="0 0 300 170" role="img" aria-label="Composition: House composes Rooms (filled diamond)">
-            <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect class="uml-box" x="12" y="58" width="88" height="52" rx="4"/>
-              <rect class="uml-box" x="202" y="58" width="86" height="52" rx="4"/>
-              <path class="uml-accent" d="M100 84L114 74L128 84L114 94Z" fill="currentColor"/>
-              <path class="uml-accent" d="M128 84H202"/>
-            </g>
-            <g fill="currentColor" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="15">
-              <text x="56" y="89" text-anchor="middle" font-weight="700">House</text>
-              <text x="245" y="89" text-anchor="middle" font-weight="700">Room</text>
-              <text x="106" y="68" text-anchor="middle">1</text>
-              <text x="186" y="68" text-anchor="middle">1..*</text>
-              <text class="uml-caption" x="150" y="138" text-anchor="middle" font-size="13">composition</text>
-            </g>
-          </svg>
-          <figcaption>Composition — filled diamond on the whole side.</figcaption>
-        </figure>
-      <h2 style="margin-top:1.2rem">Singleton and chaining</h2>
+      <h2>Singleton</h2>
+      <p>Exactly one instance, reached through a static getInstance().</p>
         <figure>
           <svg viewBox="0 0 300 170" role="img" aria-label="Singleton: clients access one instance">
             <defs>
@@ -133,6 +58,17 @@
           </svg>
           <figcaption>Singleton — every client gets the same instance.</figcaption>
         </figure>
+      <pre><code><span class="kw">final class</span> <span class="type">Singleton</span> {
+  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE
+      = <span class="kw">new</span> <span class="type">Singleton</span>();
+  <span class="kw">private</span> <span class="type">Singleton</span>() {}
+  <span class="kw">static</span> <span class="type">Singleton</span> getInstance() {
+    <span class="kw">return</span> INSTANCE;
+  }
+}</code></pre>
+
+      <h2 style="margin-top:1.2rem">Constructor chaining</h2>
+      <p>No constructor declared? Java inserts a default one that calls super().</p>
         <figure>
           <svg viewBox="0 0 300 232" role="img" aria-label="Constructor chaining: Child super() to Object">
             <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -156,6 +92,12 @@
           </svg>
           <figcaption>Constructors chain upward with super().</figcaption>
         </figure>
+      <pre><code><span class="kw">class</span> <span class="type">Grandparent</span> { }
+<span class="kw">class</span> <span class="type">Parent</span> <span class="kw">extends</span> <span class="type">Grandparent</span> { }
+<span class="kw">final class</span> <span class="type">Child</span> <span class="kw">extends</span> <span class="type">Parent</span> {
+  Child() { <span class="kw">super</span>(); }
+}</code></pre>
+      <p>The chain runs Child &rarr; Parent &rarr; Grandparent &rarr; Object.</p>
     </article>
   </main>
 

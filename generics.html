@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generics — rules with short Java examples.">
+  <link rel="icon" href="data:,">
+  <title>Generics | SE301 Revision</title>
+  <link rel="stylesheet" href="assets/pico.min.css?v=2">
+  <link rel="stylesheet" href="assets/site.css?v=3">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">SE301 <span>Revision</span></a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none">
+          <path d="M3 4.5H15M3 9H15M3 13.5H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="generics.html" aria-current="page">Generics</a></li>
+        <li><a href="uml.html">UML</a></li>
+        <li><a href="patterns.html">Principles</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="container">
+    <article>
+      <h2>Generics</h2>
+      <p>Generics let one class or method work with many types, checked at compile time.</p>
+
+      <div class="rule">
+        <h3>1. Type parameters</h3>
+        <p>A <code>&lt;T&gt;</code> type parameter is a placeholder for the real type.</p>
+        <pre><code><span class="kw">class</span> <span class="type">Box</span>&lt;T&gt; {
+  <span class="kw">private</span> T value;
+  T get() { <span class="kw">return</span> value; }
+  <span class="kw">void</span> set(T v) { <span class="kw">this</span>.value = v; }
+}</code></pre>
+      </div>
+
+      <div class="rule">
+        <h3>2. Bounded type parameters</h3>
+        <p><code>&lt;T extends Number&gt;</code> accepts only that type or its subclasses.</p>
+        <pre><code><span class="kw">static</span> &lt;T <span class="kw">extends</span> <span class="type">Number</span>&gt; <span class="kw">double</span> sum(T a, T b) {
+  <span class="kw">return</span> a.doubleValue() + b.doubleValue();
+}</code></pre>
+      </div>
+
+      <div class="rule">
+        <h3>3. Wildcards</h3>
+        <p><code>?</code> means an unknown type.</p>
+        <pre><code><span class="kw">void</span> sizeOf(List&lt;?&gt; list) {
+  <span class="kw">int</span> n = list.size(); <span class="str">// read-only, type unknown</span>
+}</code></pre>
+        <p><code>? extends T</code> — upper bound: read is safe (<code>Number</code> or a subtype).</p>
+        <pre><code><span class="kw">void</span> printAll(List&lt;? <span class="kw">extends</span> <span class="type">Number</span>&gt; nums) {
+  <span class="kw">for</span> (<span class="type">Number</span> n : nums) System.out.println(n);
+}</code></pre>
+        <p><code>? super T</code> — lower bound: writing is safe (<code>Integer</code> or a supertype).</p>
+        <pre><code><span class="kw">void</span> addOne(List&lt;? <span class="kw">super</span> <span class="type">Integer</span>&gt; box) {
+  box.add(1);
+}</code></pre>
+      </div>
+
+      <div class="rule">
+        <h3>4. Generic methods</h3>
+        <p>The type parameter belongs to the method, not the class.</p>
+        <pre><code><span class="kw">static</span> &lt;T&gt; T first(List&lt;T&gt; list) {
+  <span class="kw">return</span> list.get(0);
+}</code></pre>
+      </div>
+
+      <div class="rule">
+        <h3>5. Type erasure</h3>
+        <p>The type argument exists at compile time only — the runtime sees the raw type.</p>
+        <pre><code><span class="comment">// Box&lt;String&gt; and Box&lt;Integer&gt; are both just Box at runtime</span></code></pre>
+      </div>
+
+      <div class="rule">
+        <h3>6. No primitives</h3>
+        <p>Use boxed types: <code>Box&lt;Integer&gt;</code> works, <code>Box&lt;int&gt;</code> does not.</p>
+        <pre><code><span class="type">Box</span>&lt;<span class="type">Integer</span>&gt; n = <span class="kw">new</span> <span class="type">Box</span>&lt;&gt;();</code></pre>
+      </div>
+    </article>
+  </main>
+
+  <footer class="container">
+    SE301 revision sheet &middot; OOP, generics and UML
+  </footer>
+
+  <script>
+    (function () {
+      var navbar = document.querySelector("header.navbar");
+      var btn = document.getElementById("nav-toggle");
+      var links = document.getElementById("nav-links");
+      if (!navbar || !btn || !links) return;
+      function close() {
+        navbar.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = navbar.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -3,50 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SE301 revision — OOP principles: aggregation, composition, singleton, constructor chaining, and UML notation.">
+  <meta name="description" content="SE301 revision — generics, UML diagrams and design principles.">
   <link rel="icon" href="data:,">
-  <title>SE301 Revision — OOP Principles &amp; UML</title>
+  <title>SE301 Revision</title>
   <link rel="stylesheet" href="assets/pico.min.css?v=2">
-  <link rel="stylesheet" href="assets/site.css?v=2">
+  <link rel="stylesheet" href="assets/site.css?v=3">
 </head>
 <body>
 
   <header class="navbar">
     <div class="container nav-inner">
-      <a class="brand" href="index.html">SE301 <span class="brand-accent2">Revision</span></a>
+      <a class="brand" href="index.html">SE301 <span>Revision</span></a>
       <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
-        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none">
-          <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" fill="none">
+          <path d="M3 4.5H15M3 9H15M3 13.5H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
       </button>
       <ul id="nav-links" class="nav-links">
-        <li><a href="aggregation.html">Aggregation</a></li>
-        <li><a href="composition.html">Composition</a></li>
-        <li><a href="singleton.html">Singleton</a></li>
-        <li><a href="constructor-chaining.html">Constructor</a></li>
+        <li><a href="generics.html">Generics</a></li>
         <li><a href="uml.html">UML</a></li>
+        <li><a href="patterns.html">Principles</a></li>
       </ul>
     </div>
   </header>
-  <main class="container landing">
+  <main class="container">
 
     <hgroup>
       <h1>SE301 Revision</h1>
-      <p>OOP principles and their UML notation — five short pages.</p>
+      <p>Three short pages: generics, UML, and a few principles.</p>
     </hgroup>
 
     <ul class="topic-list">
-      <li><a href="aggregation.html">Aggregation</a></li>
-      <li><a href="composition.html">Composition</a></li>
-      <li><a href="singleton.html">Singleton</a></li>
-      <li><a href="constructor-chaining.html">Constructor chaining</a></li>
-      <li><a href="uml.html">UML at a glance</a></li>
+      <li><a href="generics.html">Generics — rules and examples</a></li>
+      <li><a href="uml.html">UML diagrams</a></li>
+      <li><a href="patterns.html">Principles — Singleton, constructor chaining</a></li>
     </ul>
 
   </main>
 
   <footer class="container">
-    SE301 revision sheet &middot; OOP principles and UML
+    SE301 revision sheet &middot; OOP, generics and UML
   </footer>
 
   <script>
@@ -55,22 +51,20 @@
       var btn = document.getElementById("nav-toggle");
       var links = document.getElementById("nav-links");
       if (!navbar || !btn || !links) return;
+      function close() {
+        navbar.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
         var open = navbar.classList.toggle("open");
         btn.setAttribute("aria-expanded", String(open));
       });
       document.addEventListener("click", function (e) {
-        if (navbar.classList.contains("open") && !navbar.contains(e.target)) {
-          navbar.classList.remove("open");
-          btn.setAttribute("aria-expanded", "false");
-        }
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) close();
       });
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && navbar.classList.contains("open")) {
-          navbar.classList.remove("open");
-          btn.setAttribute("aria-expanded", "false");
-        }
+        if (e.key === "Escape") close();
       });
     })();
   </script>
