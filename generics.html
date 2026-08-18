@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generics - rules with code examples.">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <title>Generics · SE301</title>
+  <link rel="stylesheet" href="assets/site.css?v=5">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">SE301</a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+          <path d="M2 4H14M2 8H14M2 12H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="oop.html">OOP principles</a></li>
+        <li><a href="uml.html">UML</a></li>
+        <li><a href="generics.html" aria-current="page">Generics</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="page">
+    <h1>Generics</h1>
+    <p class="lede">Six rules, each with a small example.</p>
+
+    <h3>1 · Type parameters</h3>
+    <p><code>&lt;T&gt;</code> is a placeholder for the real type.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Box</span>&lt;T&gt; {
+  <span class="kw">private</span> T value;
+  T get() { <span class="kw">return</span> value; }
+  <span class="kw">void</span> set(T v) { <span class="kw">this</span>.value = v; }
+}</code></pre>
+
+    <h3>2 · Bounded type parameters</h3>
+    <p><code>&lt;T extends Number&gt;</code> accepts that type or a subclass.</p>
+    <pre><code><span class="kw">static</span> &lt;T <span class="kw">extends</span> <span class="type">Number</span>&gt; <span class="kw">double</span> sum(T a, T b) {
+  <span class="kw">return</span> a.doubleValue() + b.doubleValue();
+}</code></pre>
+
+    <h3>3 · Unbounded wildcard ?</h3>
+    <p><code>?</code> means an unknown type; safe to read.</p>
+    <pre><code><span class="kw">void</span> sizeOf(List&lt;?&gt; list) {
+  <span class="kw">int</span> n = list.size(); <span class="comment">// type unknown, usable</span>
+}</code></pre>
+
+    <h3>4 · Upper bound ? extends T</h3>
+    <p>Read only as T or a subtype (Number and below).</p>
+    <pre><code><span class="kw">void</span> printAll(List&lt;? <span class="kw">extends</span> <span class="type">Number</span>&gt; nums) {
+  <span class="kw">for</span> (<span class="type">Number</span> n : nums) System.out.println(n);
+}</code></pre>
+
+    <h3>5 · Lower bound ? super T</h3>
+    <p>Write T or its supertypes (Integer and above).</p>
+    <pre><code><span class="kw">void</span> addOne(List&lt;? <span class="kw">super</span> <span class="type">Integer</span>&gt; box) {
+  box.add(1);
+}</code></pre>
+
+    <h3>6 · Type erasure and no primitives</h3>
+    <p>The type argument exists at compile time only. Use boxed types.</p>
+    <pre><code><span class="comment">// Box&lt;String&gt; and Box&lt;Integer&gt; are both just Box at runtime</span>
+<span class="type">Box</span>&lt;<span class="type">Integer</span>&gt; n = <span class="kw">new</span> <span class="type">Box</span>&lt;&gt;(); <span class="comment">// Box&lt;int&gt; is invalid</span></code></pre>
+  </main>
+
+  <footer>SE301 revision</footer>
+
+  <script>
+    (function () {
+      var navbar = document.querySelector("header.navbar");
+      var btn = document.getElementById("nav-toggle");
+      var links = document.getElementById("nav-links");
+      if (!navbar || !btn || !links) return;
+      function close() {
+        navbar.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = navbar.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SE301 revision - OOP principles, UML and generics.">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <title>SE301 Revision</title>
+  <link rel="stylesheet" href="assets/site.css?v=5">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">SE301</a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+          <path d="M2 4H14M2 8H14M2 12H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="oop.html">OOP principles</a></li>
+        <li><a href="uml.html">UML</a></li>
+        <li><a href="generics.html">Generics</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="page">
+    <h1 style="margin-bottom:4px">SE301 revision</h1>
+    <p class="lede" style="margin-bottom:20px">Three pages. Keep it simple.</p>
+
+    <ul class="topic-list">
+      <li><a href="oop.html">OOP principles<div class="sub">Encapsulation, inheritance, polymorphism, abstraction, has-a, singleton</div></a></li>
+      <li><a href="uml.html">UML diagrams<div class="sub">Notation and example class diagrams</div></a></li>
+      <li><a href="generics.html">Generics<div class="sub">Rules with code examples</div></a></li>
+    </ul>
+  </main>
+
+  <footer>SE301 revision</footer>
+
+  <script>
+    (function () {
+      var navbar = document.querySelector("header.navbar");
+      var btn = document.getElementById("nav-toggle");
+      var links = document.getElementById("nav-links");
+      if (!navbar || !btn || !links) return;
+      function close() {
+        navbar.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = navbar.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    })();
+  </script>
+</body>
+</html>

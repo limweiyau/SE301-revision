@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OOP principles with matching code.">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <title>OOP principles · SE301</title>
+  <link rel="stylesheet" href="assets/site.css?v=5">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">SE301</a>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+          <path d="M2 4H14M2 8H14M2 12H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="oop.html" aria-current="page">OOP principles</a></li>
+        <li><a href="uml.html">UML</a></li>
+        <li><a href="generics.html">Generics</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="page">
+    <h1>OOP principles</h1>
+    <p class="lede">Seven ideas. Each with one small Java example.</p>
+
+    <h3>1 · Encapsulation</h3>
+    <p>Keep fields private; control access through methods.</p>
+    <pre><code><span class="kw">final class</span> <span class="type">Account</span> {
+  <span class="kw">private double</span> balance;
+  <span class="kw">void</span> deposit(<span class="kw">double</span> amount) { balance += amount; }
+  <span class="kw">double</span> balance() { <span class="kw">return</span> balance; }
+}</code></pre>
+
+    <h3>2 · Inheritance</h3>
+    <p>A subclass reuses and extends the superclass.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Animal</span> { <span class="type">String</span> sound() { <span class="kw">return</span> <span class="str">"..."</span>; } }
+<span class="kw">class</span> <span class="type">Dog</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="kw">@Override</span> <span class="type">String</span> sound() { <span class="kw">return</span> <span class="str">"Woof"</span>; }
+}</code></pre>
+
+    <h3>3 · Polymorphism</h3>
+    <p>One reference type, many runtime behaviours.</p>
+    <pre><code><span class="type">Animal</span> pet = <span class="kw">new</span> <span class="type">Dog</span>();
+System.out.println(pet.sound()); <span class="comment">// Woof, resolved at runtime</span></code></pre>
+
+    <h3>4 · Abstraction</h3>
+    <p>Declare what; let subclasses decide how.</p>
+    <pre><code><span class="kw">abstract class</span> <span class="type">Shape</span> {
+  <span class="kw">abstract double</span> area();
+}
+<span class="kw">final class</span> <span class="type">Square</span> <span class="kw">extends</span> <span class="type">Shape</span> {
+  <span class="kw">private final double</span> side;
+  Square(<span class="kw">double</span> s) { side = s; }
+  <span class="kw">@Override double</span> area() { <span class="kw">return</span> side * side; }
+}</code></pre>
+
+    <h3>5 · Aggregation vs composition</h3>
+    <p>Both are has-a links. Aggregation: parts passed in, may outlive the whole. Composition: the whole creates and owns the parts.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Library</span> {          <span class="comment">// aggregation</span>
+  <span class="kw">final</span> List&lt;Book&gt; books;
+  Library(List&lt;Book&gt; books) { <span class="kw">this</span>.books = books; }
+}
+<span class="kw">class</span> <span class="type">House</span> {             <span class="comment">// composition</span>
+  <span class="kw">final</span> List&lt;Room&gt; rooms =
+      List.of(<span class="kw">new</span> Room(<span class="str">"Kitchen"</span>));
+}</code></pre>
+
+    <h3>6 · Singleton</h3>
+    <p>Exactly one instance, reached through a static getInstance().</p>
+    <pre><code><span class="kw">final class</span> <span class="type">Singleton</span> {
+  <span class="kw">private static final</span> <span class="type">Singleton</span> INSTANCE = <span class="kw">new</span> <span class="type">Singleton</span>();
+  <span class="kw">private</span> <span class="type">Singleton</span>() {}
+  <span class="kw">static</span> <span class="type">Singleton</span> getInstance() { <span class="kw">return</span> INSTANCE; }
+}</code></pre>
+
+    <h3>7 · Constructor chaining</h3>
+    <p>No constructor declared? Java inserts one that calls super(). It chains to Object.</p>
+    <pre><code><span class="kw">class</span> <span class="type">Child</span> <span class="kw">extends</span> <span class="type">Parent</span> {
+  Child() { <span class="kw">super</span>(); } <span class="comment">// inserted if you omit it</span>
+}</code></pre>
+    <p style="color:var(--muted);font-size:14px">Child &rarr; Parent &rarr; ... &rarr; Object</p>
+  </main>
+
+  <footer>SE301 revision</footer>
+
+  <script>
+    (function () {
+      var navbar = document.querySelector("header.navbar");
+      var btn = document.getElementById("nav-toggle");
+      var links = document.getElementById("nav-links");
+      if (!navbar || !btn || !links) return;
+      function close() {
+        navbar.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = navbar.classList.toggle("open");
+        btn.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("open") && !navbar.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    })();
+  </script>
+</body>
+</html>
