@@ -89,7 +89,7 @@ hgroup { margin-bottom: 1.4rem; }
 hgroup h1 { margin-bottom: 0.25rem; font-size: clamp(1.7rem, 2.5vw + 0.8rem, 2.4rem); }
 hgroup p { margin: 0; color: var(--pico-muted-color); }
 
-article { padding: 1.1rem 1.2rem; margin-bottom: 1.25rem; }
+article { padding: 1.1rem 1.2rem 0.2rem; margin-bottom: 1.25rem; }
 article > :last-child { margin-bottom: 0; }
 
 h2 { margin: 0 0 0.5rem; font-size: clamp(1.25rem, 1vw + 0.8rem, 1.5rem); }
@@ -113,6 +113,7 @@ pre {
   font-size: clamp(10.5px, 0.8vw + 0.35rem, 13px);
   line-height: 1.45;
 }
+pre:last-child, figure:last-child { margin-bottom: 0; }
 pre code { font-size: 1em; line-height: 1.45; }
 pre code .kw { color: #ff7b72; }
 pre code .type { color: #79c0ff; }
